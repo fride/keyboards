@@ -13,6 +13,33 @@ nshot_state_t  nshot_states[] = {
 };
 uint8_t NUM_NSHOT_STATES = sizeof(nshot_states) / sizeof(nshot_state_t);
 
+
+void cancel_nshots() {
+    nshot_state_t *curr_state = NULL;
+    for (int i = 0; i < NUM_NSHOT_STATES; ++i) {
+        curr_state = &nshot_states[i];
+        curr_state->state = os_up_unqueued;
+        curr_state->count = 0;
+        unregister_code(curr_state->mod);
+    }
+}
+void tigger_nshot(uint16_t trigger) {
+    nshot_state_t *curr_state = NULL;
+    cancel_nshots();
+    for (int i = 0; i < NUM_NSHOT_STATES; ++i) {
+        curr_state = &nshot_states[i];
+        if (trigger == curr_state->trigger) {
+             // Trigger keydown
+            if (curr_state->state == os_up_unqueued) {
+                register_code(curr_state->mod);
+            }
+            curr_state->state = os_up_queued;
+            curr_state->count = 0;
+            break;
+        }
+    }
+}
+
 void process_nshot_state(uint16_t keycode, keyrecord_t *record) {
     nshot_state_t *curr_state = NULL;
 

@@ -40,12 +40,13 @@ enum custom_keycodes {
     OS_LGUI,   // OS Mods
     TS_LCTL,   // Two-shot ctrl
 
+    ARROW_L,
+    ARROW_R,
+    ANFZCH, // TODO remove this?
     SZ,
     QU,
 
-    ARROW_R,
-    ARROW_L,
-    ANFZCH,
+    SP_MOD, // oneshot modifier and tap, nav layer on hold. See 'NAV_MOD'
 
     // implement a compose
     AE,
@@ -109,6 +110,9 @@ enum custom_keycodes {
 #define QUOT_MOD LT(_MODL, KC_QUOT)
 #define WNAV MO(_WNAV)
 
+
+#define NAV_MOD LT(_NAV, SP_MOD)
+
 // combos with mods etc
 #define ENT_MOD LT(_MODL, KC_ENT)
 #define ESC_SYN LT(_SYMR, KC_ESC)
@@ -161,7 +165,7 @@ enum custom_keycodes {
 // thumbs - not perfect yet.
 //#define THUMB_L1 KC_SPACE
 #define THUMB_L1 NAV_SPC
-#define THUMB_L2 KC_F19
+#define THUMB_L2 NAV_MOD
 
 //#define THUMB_R1 KC_SPC
 #define THUMB_R1 KC_F19

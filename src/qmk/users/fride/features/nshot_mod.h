@@ -33,3 +33,9 @@ bool is_nshot_cancel_key(uint16_t keycode);
 
 // Keys that should not count towards n-shot usage (e.g., layer toggles)
 bool is_nshot_ignored_key(uint16_t keycode, keyrecord_t *record);
+
+// cancel all nshots!
+// TIL https://stackoverflow.com/questions/42125/warning-error-function-declaration-isnt-a-prototype#47693
+void cancel_nshots(void);
+
+void tigger_nshot(uint16_t trigger);

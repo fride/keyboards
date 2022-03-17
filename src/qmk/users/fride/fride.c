@@ -88,6 +88,12 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
     oneshot_mod_state = get_oneshot_mods();
 
     switch (keycode) {
+        case NAV_MOD:
+            if (record->tap.count > 0){
+                tigger_nshot(OS_LGUI);
+                return false;
+            }
+            return true;
         case LEADER:
             start_leading();
             return false;
