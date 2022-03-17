@@ -1,0 +1,82 @@
+#include QMK_KEYBOARD_H
+
+#include "keycodes.h"
+#include "keymap_german_osx.h"
+
+#include "fride.h"
+#include "layermodes.h"
+#include "tap_hold.h"
+#include "repeat.h"
+#include "casemodes.h"
+
+
+/*
+https://sites.google.com/alanreiser.com/handsdown/home?authuser=0#h.4iacrb2pogu6
+vz g  h  p  kq  / ( { ' "
+
+r s n t f   j a e c i
+
+x m l d b   -+ u o w  y
+
+,; .:  ␣  ⏎
+*/
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+
+    //https://sites.google.com/alanreiser.com/handsdown/home?authuser=0#h.4iacrb2pogu6
+    [_BASE] = LAYOUT(
+        KC_V,    KC_G, KC_H,          KC_P,          KC_K,           KC_SLSH,  KC_COMM,        KC_DOT,        REPEAT,    KC_QUOT,
+        KC_R,    KC_S, LALT_T(KC_N),  LGUI_T(KC_T),  KC_F,           KC_J,     RGUI_T(KC_A),   RALT_T(KC_E),  KC_C,      KC_I,
+        KC_X,    KC_M, KC_L  ,        MEH_T(KC_D),   KC_B,           KC_MINS,  MEH_T(KC_U),    KC_O,          KC_W,      KC_Y,
+                                      LT_SPC, OSM(MOD_LSFT),         OSM(MOD_RCTL), OSL(_SYM)
+    ),
+
+    [_GERM] = LAYOUT(
+        KC_J,    KC_C, KC_Y, KC_F,    REPEAT,      KC_X,    KC_L,   KC_K ,   KC_U,    KC_DOT,
+        KC_R,    KC_S, KC_T, KC_H,    KC_D,        KC_M,    KC_N,   KC_A,    KC_I,    KC_O,
+        KC_COMM, KC_V, KC_G, KC_P,    KC_B,        SZ,      KC_W,   UMl_A,   UMl_U,   UMl_O,
+                             LT_SPC,  MODSR,       MODSL, KC_E
+    ),
+
+    [_NAV] = LAYOUT(
+        C(S(KC_TAB)),  C(KC_TAB), G(KC_LBRACKET),   G(KC_RBRACKET),  G(KC_GRV),            KC_TRNS,     G(KC_C),    KC_UP,         G(KC_V),     KC_PGUP,
+        OS_SHFT,       OS_CTRL,    OS_ALT,          OS_GUI,          KC_TRNS,              KC_TAB,      KC_LEFT,    KC_DOWN,       KC_RGHT,     KC_PGDN,
+        G(KC_Z),       G(KC_X),    G(KC_C),         G(KC_V),         G(KC_TILD),           MEH(KC_SPC), KC_ENT,     KC_F19,        TG(_MOUSE),  FUN,
+                                          KC_NO,       KC_NO,                WNAV  ,      KC_SPC
+    ),
+    // stolen from https://getreuer.info/posts/keyboards/symbol-layer/index.html
+    [_SYM] = LAYOUT(
+
+        GRV,     KC_LABK, KC_RABK, KC_DQUO, KC_DOT,             KC_AMPR,     KC_SCLN, KC_LBRC, KC_RBRC, KC_PERC,
+        KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_HASH,            KC_PIPE,     KC_COLN, KC_LPRN, KC_RPRN, KC_QUES,
+        KC_CIRC, KC_SLSH, KC_ASTR, KC_BSLS, UPDIR,              KC_TILD,     KC_DLR , KC_LCBR, KC_RCBR, KC_AT,
+                         CANCEL,     OSM(MOD_LSFT),             WNAV  ,      OSL(_NUMS)
+    ),
+
+    [_NUMS] = LAYOUT(
+        KC_SLSH, KC_NO, KC_NO, KC_NO,  KC_NO,                   KC_NO,      KC_NO,        KC_NO,        KC_NO,        KC_NO,
+        EIGHT,   SIX,   FOUR,  TWO,    KC_MINS,                 KC_K,       ONE,          THREE,        FIVE,         SEVEN,
+        KC_ASTR, KC_NO, KC_NO, ZERO,   KC_EQL,                  RSFT(KC_G), NINE,         KC_NO,        KC_NO,        TO(_FUN),
+                                       LT_SPC, CANCEL,          CANCEL,     OSL(_FUN)
+    ),
+
+    [_FUN] = LAYOUT(
+        KC_NO,         KC_NO,         KC_NO,         KC_NO,    KC_NO,       KC_TRNS, KC_F7, KC_F8, KC_F9, KC_F10,
+        KC_LSFT,       KC_LCTL,       KC_LALT,       KC_LGUI,  KC_NO,       KC_TRNS, KC_F4, KC_F5, KC_F6, KC_F11,
+        RESET,         KC_NO,         KC_NO,         KC_NO,    KC_NO,       KC_TRNS, KC_F1, KC_F2, KC_F3, KC_F12,
+                                      CLEAR,         KC_NO,                 KC_NO,   KC_NO
+     ),
+
+    [_MOUSE] = LAYOUT(
+        KC_NO,         KC_NO,         KC_NO,         KC_NO,          KC_NO,       KC_NO,  KC_WH_L,  KC_MS_U,    KC_WH_R, KC_WH_U,
+        OSM(MOD_LSFT), KC_BTN1,       KC_BTN2 ,      KC_BTN3,        KC_NO,       KC_NO,  KC_MS_L,  KC_MS_D,    KC_MS_R, KC_WH_U,
+        RESET,         KC_NO,         KC_NO,         KC_NO,          KC_NO,       KC_NO,  KC_TRNS,  KC_F1,      KC_TRNS, KC_TRNS,
+                                      CLEAR,         CLEAR,                       KC_RGUI,      KC_TRNS
+    ),
+
+    [_WNAV] = LAYOUT(
+        KC_NO,         MEH(KC_C),      MEH(KC_Y),  MEH(KC_F),   KC_NO,       KC_NO,  MEH(KC_7),  MEH(KC_8), MEH(KC_9), KC_WH_U,
+        OSM(MOD_LSFT), MEH(KC_S),      MEH(KC_T),  MEH(KC_H),   KC_NO,       KC_NO,  MEH(KC_4),  MEH(KC_5), MEH(KC_6), KC_WH_U,
+        G(KC_GRV),     MEH(KC_V),      MEH(KC_G),  MEH(KC_P),   KC_NO,       KC_NO,  MEH(KC_1),  MEH(KC_2), MEH(KC_3), KC_TRNS,
+                                      CLEAR,         CLEAR,                       KC_RGUI,      KC_TRNS
+    )
+};

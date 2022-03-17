@@ -1,0 +1,83 @@
+
+
+// thumb
+COMB(nums,       NUMWORD,     THUMB_L1, THUMB_R2 )
+COMB(sentence,   SENTENCE,    THUMB_L1, HM_3_10)
+
+// both sided
+COMB(capsword,  CAPSWORD,    HM_2_03, HM_2_08)
+COMB(leader,    LEADER,      HM_3_07, HM_3_08)
+COMB(cancel,    CLEAR,       HM_1_01, HM_1_10)
+COMB(clear,     CANCEL,      HM_2_01,HM_2_10)
+
+
+// navigation
+COMB(backspace, KC_BSPC,    HM_1_07, HM_1_08)
+COMB(del,       KC_DEL,     HM_1_08, HM_1_09)
+
+
+// arrows
+COMB(thin_arr_r,    ARROW_L,   HM_1_04, HM_2_04)
+SUBS(gt_eq,         ">=",      HM_2_04, HM_3_04)
+SUBS(pipe_to,       "|>",   KC_O, KC_J)
+
+COMB(fat_arr_l,     ARROW_R,   HM_1_07, HM_2_07)
+SUBS(thin_arr_l,    "|>",      KC_K, HM_2_07)
+SUBS(fat_arr_r,     "<=",   KC_M, KC_T)
+
+
+//top row
+COMB(q,            KC_Q,             HM_1_01, HM_1_02)
+COMB(qu,           QU,             HM_1_02, HM_1_03)
+COMB(eql,          KC_EQL,           HM_1_07, HM_1_09)
+COMB(min,          KC_MINS,          HM_1_02, HM_1_04)
+
+//home
+COMB(wich,         G(A(KC_TAB)),       KC_D, KC_M)
+COMB(help,         S(G(KC_SLASH)),     KC_H, KC_B)
+
+
+COMB(scln_mod,     SCLN_MOD,            HM_2_02, HM_2_04)
+COMB(colon,        KC_COLON,           HM_2_02, HM_2_03, HM_2_04)
+
+COMB(tab_fun,       LT(_FUN, KC_TAB),            HM_2_02,         HM_2_03)
+COMB(escape_sym,    LT(_SYM, KC_ESC),   HM_2_03,         HM_2_04)
+
+// right home row
+COMB(syms,          LT(_SYM,  KC_GRV),     HM_2_07, HM_2_08)
+// todo this does not work?
+COMB(enter_mod,     ENT_MOD,               HM_2_08, HM_2_09)
+
+COMB(quot,          QUOT_MOD,             HM_2_07, HM_2_09)
+COMB(dquot,         KC_DQUO,            HM_2_07, HM_2_08, HM_2_09)
+
+// modifiers - one shot
+COMB(lsft,         OS_LSFT,        HM_3_02, HM_3_03)
+COMB(lgui,         OS_LGUI,        HM_2_04, HM_3_04)
+COMB(lgui2,        OS_LGUI,        HM_2_04, HM_3_03)
+COMB(lalt,         OS_LALT,        HM_2_03, HM_3_03)
+COMB(lctrl,        OS_LCTL,        HM_2_02, HM_3_02)
+
+COMB(rsft,        OS_LSFT,        HM_3_08,  HM_3_09)
+COMB(rgui,        OS_LGUI,        HM_2_07,  HM_3_07)
+COMB(ralt,        OS_LALT,        HM_2_08,  HM_3_08)
+COMB(rctrl,       OS_LCTL,        HM_2_09,  HM_3_09)
+
+//
+SUBS(janf,              "Jan Friderici",        KC_J, KC_F)
+SUBS(Friderici,         "Friderici",            KC_R, KC_F)
+SUBS(https,             "https://",             NAV_SPC, KC_SLSH)
+
+// nice symbols
+COMB(lparen,         KC_LPRN,     HM_2_03, THUMB_R2)
+COMB(rparen,         KC_RPRN,     HM_2_04, THUMB_R2)
+
+COMB(lbrace,         KC_LBRC,     HM_1_03, THUMB_R2)
+COMB(rbrace,         KC_RBRC,     HM_1_04, THUMB_R2)
+
+COMB(lbrak,         KC_LCBR,     HM_3_03, THUMB_R2)
+COMB(rbrak,         KC_RCBR,     HM_3_04, THUMB_R2)
+
+// thumbs
+COMB(scln_2,       KC_SCLN,            HM_2_07, THUMB_L1)
+COMB(cln_2,        KC_COLON,           HM_2_08, THUMB_L1)

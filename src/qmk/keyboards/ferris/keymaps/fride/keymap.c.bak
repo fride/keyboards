@@ -1,0 +1,81 @@
+#include QMK_KEYBOARD_H
+#include "keycodes.h"
+
+
+
+
+// #define ALT_2 LALT_T(KC_2)
+// #define ALT_3 LALT_T(KC_3)
+// #define ALT_8 LALT_T(KC_8)
+// #define ALT_D LALT_T(KC_D)
+// #define ALT_E LALT_T(KC_E)
+// #define ALT_K LALT_T(KC_K)
+// #define ALT_LB LALT_T(KC_LBRC)
+// #define ALT_S LALT_T(KC_S)
+// #define CTRL_2 LCTL_T(KC_2)
+// #define CTRL_4 LCTL_T(KC_4)
+// #define CTRL_5 LCTL_T(KC_5)
+// #define CTRL_9 LCTL_T(KC_9)
+// #define CTRL_EQ LCTL_T(KC_EQL)
+// #define CTRL_I LCTL_T(KC_I)
+// #define CTRL_L LCTL_T(KC_L)
+// #define CTRL_R LCTL_T(KC_R)
+// #define CTRL_S LCTL_T(KC_S)
+// #define GUI_0 LGUI_T(KC_0)
+// #define GUI_1 LGUI_T(KC_1)
+// #define GUI_4 LGUI_T(KC_4)
+// #define GUI_7 LGUI_T(KC_7)
+// #define GUI_RB LGUI_T(KC_RBRC)
+// #define GUI_F LGUI_T(KC_F)
+// #define GUI_J LGUI_T(KC_J)
+// #define GUI_N LGUI_T(KC_N)
+// #define GUI_TEA LGUI_T(KC_T)
+// #define MAC_EM S(LALT(KC_MINS))
+// #define MAC_EN LALT(KC_MINS)
+// #define NAV_BK LT(_NAV, KC_BSPC)
+// #define NAV_LK TG(_NAV)
+// #define NUME_SPC LT(_NUM_E, KC_SPC)
+// #define NUMLK_E TG(_NUM_E)
+// #define NUMLK_N TG(_NUM_N)
+// #define NUMN_SPC LT(_NUM_N, KC_SPC)
+// #define SFT_0 LSFT_T(KC_0)
+// #define SFT_1 LSFT_T(KC_1)
+// #define SFT_6 LSFT_T(KC_6)
+// #define SFT_7 LSFT_T(KC_7)
+// #define SFT_A LSFT_T(KC_A)
+// #define SFT_O LSFT_T(KC_O)
+// #define SFT_OS OSM(MOD_LSFT)
+// #define SFT_QOT LSFT_T(KC_QUOT)
+// #define SYM_OS OSL(_SYM)
+// #define SYS_Z LT(_SYS, KC_Z)
+// #define VOL_DN S(LALT(KC__VOLDOWN))
+// #define VOL_UP S(LALT(KC__VOLUP))
+
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+
+
+    [_DRVK_DHM] = LAYOUT(
+      KC_SCLN,       KC_COMM,       KC_DOT,       KC_P,         KC_Y,        KC_F,  KC_G,         KC_C,         KC_R,           KC_L,
+      LSFT_T(KC_A),  LT(_SYM,KC_O), KC_E,         KC_U,         KC_I,        KC_D,  KC_H,         KC_T,         LT(_SYM,KC_N),  RSFT_T(KC_S),
+      KC_QUOT,       LCTL_T(KC_Q),  LALT_T(KC_J), LGUI_T(KC_K), KC_X,        KC_B,  RGUI_T(KC_M), RALT_T(KC_W), RCTL_T(KC_V),   KC_Z,
+                                    OSM(MOD_RSFT),LT(_NAV,KC_SPC),     OSM(MOD_RSFT),  KC_BSPC
+    ),
+    [_NAV] = LAYOUT(
+     KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,           KC_NO,      KC_HOME,      KC_UP,      KC_PGUP,      KC_END,
+     KC_LSFT,    KC_LCTL,    KC_LALT,    KC_LGUI,    MEH(KC_NO),      KC_NO,      KC_LEFT,      KC_DOWN,    KC_RGHT,      KC_NO,
+     LGUI(KC_Z), LGUI(KC_X), LGUI(KC_C), LGUI(KC_V), KC_NO,           KC_NO,      KC_ENT,       KC_NO,      KC_PGDN,      KC_NO,
+                                TG(_DRVK_DHM),      KC_NO,            KC_NO,      KC_NO
+    ),
+    [_SYM] = LAYOUT(
+      KC_QUOT,      KC_UNDS,      KC_LBRC,      KC_RBRC,      KC_CIRC,      KC_EXLM,      KC_LT,      KC_GT,      KC_EQL,      KC_AMPR,
+      KC_BSLS,      KC_SLSH,      KC_LCBR,      KC_RCBR,      KC_ASTR,      KC_QUES,      KC_LPRN,    KC_RPRN,    KC_MINS,     KC_COLN,
+      KC_HASH,      KC_DLR,       KC_PIPE,      KC_TILD,      KC_GRV,       KC_PLUS,      KC_PERC,    KC_DQUO,    KC_QUOT,     KC_QUOT,
+      TG(0),      LGUI(KC_NO),           TG(_NUM_E), KC_TRNS
+    ),
+    [_NUM_E] = LAYOUT(
+      KC_F1,        KC_F2,        KC_F3,       KC_F4,        KC_F5,      KC_F6,      KC_F7,        KC_F8,        KC_F9,        KC_F10,
+      LSFT_T(KC_7), LCTL_T(KC_5), LALT_T(KC_3),LGUI_T(KC_1),  KC_9,      KC_8,       RGUI_T(KC_0), RALT_T(KC_2), RCTL_T(KC_4), RSFT_T(KC_6),
+      KC_F11,       KC_F12,       KC_NO,       KC_NO,         KC_NO,     KC_NO,      KC_NO,        KC_NO,        KC_NO,        KC_NO,
+      TG(_DRVK_DHM),     KC_NO,     KC_NO,    TG(_DRVK_DHM)
+    )
+};
