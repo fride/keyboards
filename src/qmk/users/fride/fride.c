@@ -74,8 +74,6 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
     }
 
-    process_nshot_state(keycode, record);
-
     if (!process_tap_hold(keycode, record)) {
         // Extra register here to allow fast rolls without waiting for tap hold,
         // (which will also overwrite this).
@@ -151,6 +149,7 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
+    process_nshot_state_pre(keycode, record);
     bool res = _process_record_user(keycode, record);
        // If `false` was returned, then we did something special and should register that manually.
     // Otherwise register it here by default.
@@ -159,6 +158,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         register_key_to_repeat(keycode);
         last_mod_state = get_mods();
     }
+    process_nshot_state_post(keycode, record);
     return res;
 }
 

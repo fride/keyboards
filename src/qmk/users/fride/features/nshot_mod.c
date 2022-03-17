@@ -40,7 +40,7 @@ void tigger_nshot(uint16_t trigger) {
     }
 }
 
-void process_nshot_state(uint16_t keycode, keyrecord_t *record) {
+void process_nshot_state_pre(uint16_t keycode, keyrecord_t *record) {
     nshot_state_t *curr_state = NULL;
 
     for (int i = 0; i < NUM_NSHOT_STATES; ++i) {
@@ -70,7 +70,15 @@ void process_nshot_state(uint16_t keycode, keyrecord_t *record) {
                         break;
                 }
             }
-        } else {
+        } 
+    }
+}
+void process_nshot_state_post(uint16_t keycode, keyrecord_t *record) {
+    nshot_state_t *curr_state = NULL;
+
+    for (int i = 0; i < NUM_NSHOT_STATES; ++i) {
+        curr_state = &nshot_states[i];
+        if (keycode != curr_state->trigger) {
             if (record->event.pressed) {
                 if (is_nshot_cancel_key(keycode) && curr_state->state != os_up_unqueued) {
                     // Cancel oneshot on designated cancel keydown.
@@ -125,6 +133,7 @@ bool is_nshot_ignored_key(uint16_t keycode, keyrecord_t *record) {
         case OS_LGUI:   // OS Mods
         case TS_LCTL:   // Two-shot ctrl
         case SCLN_MOD:
+        case NAV_MOD:
         case QUOT_MOD:
             return true;
         default:

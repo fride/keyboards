@@ -26,7 +26,8 @@ extern uint8_t             NUM_NSHOT_STATES;
 // Custom one-or-more-shot implementation that does not rely on timers
 // and persists across layer changes. Based on the users/callum implementation
 // at https://github.com/callum-oakley/qmk_firmware/tree/master/users/callum
-void process_nshot_state(uint16_t keycode, keyrecord_t *record);
+void process_nshot_state_pre(uint16_t keycode, keyrecord_t *record);
+void process_nshot_state_post(uint16_t keycode, keyrecord_t *record);
 
 // Keys that should cancel the n-shot mod if tapped
 bool is_nshot_cancel_key(uint16_t keycode);
