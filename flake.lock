@@ -106,16 +106,16 @@
         "nixpkgsUnstable": "nixpkgsUnstable"
       },
       "locked": {
-        "lastModified": 1667985720,
-        "narHash": "sha256-omLdvrZe8Kl6QBygMUCWfmlNoyMo5rCEpM+jX/t6F+0=",
+        "lastModified": 1667990288,
+        "narHash": "sha256-DnetKM7EzDivUmCPtO9FtioaKjV95KymSFDH/uRLsGg=",
         "owner": "fride",
         "repo": "qmk-nix-utils",
-        "rev": "b1007dfe33ec7254c97209bac18d35d25dc715ff",
+        "rev": "04781bd521cd3e26a1e30e0b4a5a9bf53836fecf",
         "type": "github"
       },
       "original": {
         "owner": "fride",
-        "ref": "master",
+        "ref": "main",
         "repo": "qmk-nix-utils",
         "type": "github"
       }
