@@ -11,12 +11,18 @@ case combo_canel:
    return COMBO_TERM + 10;
 
 case combo_q:
-   return COMBO_TERM + 20;
+   return COMBO_TERM + 10;
+
+case combo_qu:
+   return COMBO_TERM + 10;
 
 case combo_min:
    return COMBO_TERM + 10;
 
-case combo_qu:
+case combo_shift1:
+   return COMBO_TERM + 10;
+
+case combo_shift2:
    return COMBO_TERM + 10;
 
 case combo_backspace:
@@ -46,13 +52,16 @@ case combo_enter:
 case combo_double_quote:
    return COMBO_TERM + 10;
 
+case combo_lshift:
+   return COMBO_TERM + 0;
+
 case combo_gui:
    return COMBO_TERM + 5;
 
 case combo_alt:
    return COMBO_TERM + 5;
 
-case combo_dollar:
+case combo_rshift:
    return COMBO_TERM + 5;
 
 case combo_caps:

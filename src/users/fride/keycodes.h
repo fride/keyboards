@@ -17,6 +17,8 @@ enum custom_keycodes {
   CAPSWORD,
   NUMWORD,
   SENTENCE,
+  CAMEL,
+  KEBAB,
 
   // Layer management
   CANCEL, // Cancel SYMWORD and NUMWORD
@@ -28,8 +30,6 @@ enum custom_keycodes {
   OS_LALT, // OS Mods
   OS_LGUI, // OS Mods
   TS_LCTL, // Two-shot ctrl
-
-  SPAZE, // try this to handle the one time mods with space.
 
   ARROW_L,
   ARROW_R,
@@ -50,15 +50,16 @@ enum custom_keycodes {
   SW_WIN,
   MOUSE_TGL,
 
-  // to override shifted stuff!
-  SLASH,
-  LPAREN,
-  RPAREN,
-  BRACE, // TODO NEEDED?
-  UNDER,
-  SNAKE,
-  KEBAB
+  // special character keys with double tap and long press?
 
+
+
+  // to override shifted stuff!
+  COMM,
+  DOT,
+
+  SLASH,
+  UNDER,
 };
 
 #define NAV_SPC LT(_NAV, KC_SPC)

@@ -6,14 +6,19 @@ in [
 , Combo.combo "combo_numword" 20 [30,33] "NUMWORD"
 , Combo.combo "combo_reset" 10 [ 0,9] "RESET"
 , Combo.combo "combo_canel" 10 [10,19] "CANCEL"
+
 -- top row
-, Combo.combo "combo_q" 20 [0,1] "KC_Q"
-, Combo.combo "combo_min" 10 [1,3] "KC_EQL"
-, Combo.combo "combo_qu" 10 [2,3] "QU"
+-- not needed as it is on the keyboard, Combo.combo "combo_q" 20 [0,1] "KC_Q"
+, Combo.combo "combo_q" 10 [0,1] "KC_Q"
+, Combo.combo "combo_qu" 10 [1,2] "QU"
+, Combo.combo "combo_min" 10 [1,3] "KC_MINS"
+, Combo.combo "combo_shift1" 10 [14,13] "CAPSWORD" -- if I find a nice spop for shift I can remove auto shift!
+, Combo.combo "combo_shift2" 10 [15,16] "CAMEL" -- if I find a nice spop for shift I can remove auto shift!
 , Combo.combo "combo_backspace" 10 [6,7] "KC_BSPC"
 , Combo.combo "combo_del" 10 [7,8] "KC_DEL"
 , Combo.combo "combo_eql" 10 [6,8] "KC_EQL"
 -- Home row
+
 , Combo.combo "combo_quote" 0 [11,13]    "KC_QUOTE"
 , Combo.combo "combo_esc_sym" 0 [12,13]    "ESC_SYM"
 , Combo.combo "combo_tab_mod" 10 [11,12,13] "TAB_MODS"
@@ -21,11 +26,14 @@ in [
 , Combo.combo "combo_enter" 10 [16,17,18] "KC_ENTER"
 , Combo.combo "combo_double_quote" 10 [16,18]    "KC_DQUO"
 
+
 -- lower row
+, Combo.combo "combo_lshift" 0 [21,22]    "OS_LSFT"
 , Combo.combo "combo_gui" 5 [22,23] "OS_LGUI"
 --   , Combo.combo "combo_circ" 5 [21,22] "KC_CIRC"
 , Combo.combo "combo_alt" 5 [21,23] "OS_LALT"
-, Combo.combo "combo_dollar" 5 [27,28] "KC_DLR"
+-- , Combo.combo "combo_dollar" 5 [27,28] "KC_DLR"
+, Combo.combo "combo_rshift" 5 [27,28] "OS_LSFT"
 , Combo.combo "combo_caps" 5 [26,28] "CAPSWORD"
 
 -- Number combos, using same side thumb (as pinkies are not used)

@@ -89,8 +89,8 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
   oneshot_mod_state = get_oneshot_mods();
 
   switch (keycode) {
-  case SNAKE:
-    enable_xcase_with(KC_UNDS);
+  case CAMEL:
+    enable_xcase_with(OSM(MOD_LSFT));
     return true;
   case NUM_G:
     if (record->event.pressed) {
@@ -297,13 +297,12 @@ bool tap_hold(uint16_t keycode) {
   case ARROW_L:
   // case KC_DOT:
   case ANFZCH:
-  case LPAREN:
-  case RPAREN:
-  case BRACE:
   case UNDER:
   case KC_LT:
   case KC_QUES:
   case KC_HASH:
+  case DOT:
+  case COMM:
   case COPY_PASTE:
     return true;
   default:
@@ -315,41 +314,47 @@ void tap_hold_send_hold(uint16_t keycode) {
   disable_caps_word();
   mod_state = get_mods();
   switch (keycode) {
+  case DOT:
+    tap16_repeatable(KC_EXLM);
+    break;
+  case COMM:
+    tap16_repeatable(KC_QUES);
+    break;
   case UNDER:
     tap_code16(KC_EXLM);
     break;
-  case BRACE:
-    if (mod_state & MOD_MASK_ALT) {
-      clear_mods(); //
-      clear_oneshot_mods();
-      clear_keyboard(); // TODO find out why I need this!?
-      tap_code16(KC_RBRC);
-      set_mods(mod_state);
-    } else {
-      tap_code16(KC_RCBR);
-    }
-    break;
-  case LPAREN:
-    tap_code16(KC_LPRN);
-    tap_code16(KC_RPRN);
-    tap_code16(KC_LEFT);
-    break;
+//  case BRACE:
+//    if (mod_state & MOD_MASK_ALT) {
+//      clear_mods(); //
+//      clear_oneshot_mods();
+//      clear_keyboard(); // TODO find out why I need this!?
+//      tap_code16(KC_RBRC);
+//      set_mods(mod_state);
+//    } else {
+//      tap_code16(KC_RCBR);
+//    }
+//    break;
+//  case LPAREN:
+//    tap_code16(KC_LPRN);
+//    tap_code16(KC_RPRN);
+//    tap_code16(KC_LEFT);
+//    break;
   case KC_LT:
     tap_code16(KC_LT);
     tap_code16(KC_GT);
     tap_code16(KC_LEFT);
     break;
-  case RPAREN:
-    if (mod_state & MOD_MASK_ALT) {
-      clear_mods(); //
-      clear_oneshot_mods();
-      clear_keyboard(); // TODO find out why I need this!?
-      tap_code16(KC_LBRC);
-      set_mods(mod_state);
-    } else {
-      tap_code16(KC_RCBR);
-    }
-    break;
+//  case RPAREN:
+//    if (mod_state & MOD_MASK_ALT) {
+//      clear_mods(); //
+//      clear_oneshot_mods();
+//      clear_keyboard(); // TODO find out why I need this!?
+//      tap_code16(KC_LBRC);
+//      set_mods(mod_state);
+//    } else {
+//      tap_code16(KC_RCBR);
+//    }
+//    break;
   case COPY_PASTE:
     SEND_STRING(SS_DOWN(X_LGUI) SS_TAP(X_V) SS_UP(X_LGUI));
     break;
@@ -425,6 +430,12 @@ void tap_hold_send_hold(uint16_t keycode) {
 void tap_hold_send_tap(uint16_t keycode) {
   mod_state = get_mods();
   switch (keycode) {
+  case DOT:
+      tap16_repeatable(KC_DOT);
+      break;
+  case COMM:
+    tap16_repeatable(KC_COMM);
+        break;
   case KC_LT:
     tap_code16(KC_LT);
     break;
@@ -458,56 +469,43 @@ void tap_hold_send_tap(uint16_t keycode) {
   case QU:
     send_string("qu");
     break;
-  case BRACE:
-    if (mod_state & MOD_MASK_SHIFT) {
-      clear_mods();
-      clear_keyboard(); // TODO find out why I need this!?
-      clear_oneshot_mods();
-      tap_code16(KC_LBRC);
-      set_mods(mod_state);
-    } else {
-      tap_code16(KC_LCBR);
-    }
-    break;
-  case LPAREN:
-    if (mod_state & MOD_MASK_SHIFT) {
-      clear_mods(); //
-      clear_oneshot_mods();
-      clear_keyboard(); // TODO find out why I need this!?
-      tap_code16(KC_LBRC);
-      set_mods(mod_state);
-    } else {
-      tap_code16(KC_LPRN);
-    }
-    break;
-  case RPAREN:
-    if (mod_state & MOD_MASK_SHIFT) {
-      clear_mods(); //
-      clear_oneshot_mods();
-      clear_keyboard(); // TODO find out why I need this!?
-      tap_code16(KC_RBRC);
-      set_mods(mod_state);
-    } else {
-      tap_code16(KC_RPRN);
-    }
-    break;
+//  case BRACE:
+//    if (mod_state & MOD_MASK_SHIFT) {
+//      clear_mods();
+//      clear_keyboard(); // TODO find out why I need this!?
+//      clear_oneshot_mods();
+//      tap_code16(KC_LBRC);
+//      set_mods(mod_state);
+//    } else {
+//      tap_code16(KC_LCBR);
+//    }
+//    break;
+//  case LPAREN:
+//    if (mod_state & MOD_MASK_SHIFT) {
+//      clear_mods(); //
+//      clear_oneshot_mods();
+//      clear_keyboard(); // TODO find out why I need this!?
+//      tap_code16(KC_LBRC);
+//      set_mods(mod_state);
+//    } else {
+//      tap_code16(KC_LPRN);
+//    }
+//    break;
+//  case RPAREN:
+//    if (mod_state & MOD_MASK_SHIFT) {
+//      clear_mods(); //
+//      clear_oneshot_mods();
+//      clear_keyboard(); // TODO find out why I need this!?
+//      tap_code16(KC_RBRC);
+//      set_mods(mod_state);
+//    } else {
+//      tap_code16(KC_RPRN);
+//    }
+//    break;
   default:
     tap16_repeatable(keycode);
   }
 }
-
-// TODO autoshift!
-// uint16_t get_autoshift_timeout(uint16_t keycode, keyrecord_t *record) {
-//     switch(keycode) {
-//         case KC_C:
-//         case KC_R:
-//         case KC_W:
-//         case KC_J:
-//             return 50 + get_generic_autoshift_timeout();
-//         default:
-//             return get_generic_autoshift_timeout();
-//     }
-// }
 
 void matrix_scan_user(void) { tap_hold_matrix_scan(); }
 

@@ -1,6 +1,22 @@
 * Jans Keyboards
 
-| "KC_W"    |   | "KC_L"    |   | "KC_Y"    |        | "KC_P" |   | "KC_B" |   | "KC_Z"    |   | "KC_F" |   | "KC_O"    |   | "KC_U"    |   | "KC_DOT"  |
-| "KC_C"    |   | "KC_R"    |   | "KC_S"    |        | "KC_D" |   | "KC_G" |   | "KC_M"    |   | "KC_N" |   | "KC_E"    |   | "KC_I"    |   | "KC_A"    |
-| "KC_COMM" |   | "KC_J"    |   | "KC_V"    |        | "KC_K" |   | "KC_X" |   | "KC_SLSH" |   | "KC_H" |   | "KC_LPRN" |   | "KC_RPRN" |   | "KC_UNDS" |
-| "KC_SPC"  |   | "NAV_SPC" |   | "OS_LCTL" | "KC_T" |        |   |        |   |           |   |        |   |           |   |           |   |           |
+** Inspired by:
+    - https://github.com/treeman/qmk_firmware/tree/master/keyboards/ferris/keymaps
+    - https://docs.google.com/document/d/1_a5Nzbkwyk1o0bvTctZrtgsee9jSP-6I0q3A0_9Mzm0/edit#heading=h.eacu4ni0y4i0
+    - https://sites.google.com/alanreiser.com/handsdown/home/hands-down-neu
+    - https://keymapdb.com/keymaps/alterecco-zmk/
+    - https://github.com/rayduck/pnohty
+    - https://github.com/possumvibes/qmk_firmware/tree/1c9a9376ea256cfcfbf4b33d81b85763c974191c/users/possumvibes
+    - https://getreuer.info/posts/keyboards/symbol-layer/index.html
+
+** Build with QMK an Dhall
+- https://github.com/dhall-lang/dhall-lang/blob/master/Prelude/Natural/show.dhall
+- https://learnxinyminutes.com/docs/dhall/
+- https://github.com/dhall-lang/dhall-nethack
+- https://github.com/dhall-lang/dhall-lang
+
+and many others.
+
+* Finding a new layout
+ TODO https://discord.com/channels/894632051028938873/930484366260441139/982930412470943774
+ https://cdn.discordapp.com/attachments/930484366260441139/982930412269629450/Screenshot_2022-06-05_at_10-53-08_Keyboard_Layout_Editor.png
