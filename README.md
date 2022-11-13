@@ -8,6 +8,8 @@ Inspired by:
 - https://sites.google.com/alanreiser.com/handsdown/home/hands-down-neu
 - https://keymapdb.com/keymaps/alterecco-zmk/
 - https://github.com/possumvibes/qmk_firmware/tree/1c9a9376ea256cfcfbf4b33d81b85763c974191c/users/possumvibes
+- https://cdn.discordapp.com/attachments/819487090521407508/1017494013336625272/image0.jpg
+- https://cdn.discordapp.com/attachments/930484366260441139/982930412269629450/Screenshot_2022-06-05_at_10-53-08_Keyboard_Layout_Editor.png
 
 ## Dhall
 - https://github.com/dhall-lang/dhall-lang/blob/master/Prelude/Natural/show.dhall

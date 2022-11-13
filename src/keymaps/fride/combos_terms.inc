@@ -10,6 +10,12 @@ case combo_reset:
 case combo_canel:
    return COMBO_TERM + 10;
 
+case combo_arrow_left:
+   return COMBO_TERM + 10;
+
+case combo_arrow_right:
+   return COMBO_TERM + 10;
+
 case combo_q:
    return COMBO_TERM + 10;
 
@@ -33,6 +39,9 @@ case combo_del:
 
 case combo_eql:
    return COMBO_TERM + 10;
+
+case combo_num:
+   return COMBO_TERM + 5;
 
 case combo_quote:
    return COMBO_TERM + 0;

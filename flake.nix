@@ -32,9 +32,9 @@
             installPhase = ''
               KEYBOARD_DIR="$out/keymaps/fride"
               mkdir -p "$KEYBOARD_DIR
-              dhall text <<< './render/toKeymapSource.dhall ./keymaps/ferris-canary-thumb-t.dhall' > $KEYBOARD_DIR/keymap.c
-              dhall text <<< './render/renderComboDefs.dhall ./keymaps/ferris-canary-thumb-t.dhall' > $KEYBOARD_DIR/combos.def
-              dhall text <<< './render/renderComboTerms.dhall ./keymaps/ferris-canary-thumb-t.dhall' > $KEYBOARD_DIR/combos_terms.inc
+              dhall text <<< './render/toKeymapSource.dhall ./keymaps/ferris-fride.dhall' > $KEYBOARD_DIR/keymap.c
+              dhall text <<< './render/renderComboDefs.dhall ./keymaps/ferris-fride.dhall' > $KEYBOARD_DIR/combos.def
+              dhall text <<< './render/renderComboTerms.dhall ./keymaps/ferris-fride.dhall' > $KEYBOARD_DIR/combos_terms.inc
             '';
         };
         utils-factory = builtins.getAttr system qmk-nix-utils.utils-factory;

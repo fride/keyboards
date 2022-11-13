@@ -89,6 +89,25 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
   oneshot_mod_state = get_oneshot_mods();
 
   switch (keycode) {
+  // TODO this shift behaviour is rather strange! ;)
+  case QU:
+      if (record->event.pressed) {
+          if (mod_state & MOD_MASK_SHIFT) {
+              send_string("Qu");
+          } else {
+              send_string("qu");
+          }
+     }
+    break;
+  case MINS:
+    if (record->event.pressed) {
+        if (mod_state & MOD_MASK_SHIFT) {
+            tap16_repeatable(KC_PLUS);
+        } else {
+            tap16_repeatable(KC_MINS);
+        }
+        return true;
+    }
   case CAMEL:
     enable_xcase_with(OSM(MOD_LSFT));
     return true;
@@ -99,27 +118,6 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
     return false;
   case KEBAB:
     enable_xcase_with(KC_MINS);
-    return true;
-  case LT(3, KC_DOT):
-    if (record->event.pressed && record->tap.count > 0) {
-      if (mod_state & MOD_MASK_SHIFT) {
-        tap_code16(KC_1);
-      } else {
-        tap_code16(KC_DOT);
-      }
-      return false;
-    }
-    return true;
-  // ,?
-  case LT(1, KC_COMM):
-    if (record->event.pressed && record->tap.count > 0) {
-      if (mod_state & MOD_MASK_SHIFT) {
-        tap_code16(KC_SLSH);
-      } else {
-        tap_code16(KC_COMM);
-      }
-      return false;
-    }
     return true;
   case SLASH:
     if (!record->event.pressed) {
@@ -147,9 +145,13 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
   }
   case QUOTE:
-    // why does this not work!?
-    tap_undead_key(true, KC_QUOT);
-    return false;
+    //tap_undead_key(true, KC_QUOT);
+    // TODO I could think about dead and undead keys.
+    if (record->event.pressed) {
+        tap16_repeatable(KC_QUOT);
+        return false;
+    }
+    break;
 
   case VIM_COLON: {
     if (record->event.pressed) {
@@ -168,32 +170,6 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return false;
     break;
-  // case LEFT_NAV:
-  //       if (record->event.pressed && record->tap.count > 0) {
-  //         if (record->event.pressed) {
-  //             // send advanced keycode, etc.
-  //             // the 16 bit version of the `tap_code` function is used here
-  //             // because KC_HASH is a non-basic keycode.
-  //             tap_code16(KC_SPACE);
-  //         }
-  //         // do not continue with default tap action
-  //         // if the MT was pressed or released, but not held
-  //         return false;
-  //     }
-  //     break;
-  // case SCLN_FUN:
-  //       if (record->event.pressed && record->tap.count > 0) {
-  //         if (record->event.pressed) {
-  //             // send advanced keycode, etc.
-  //             // the 16 bit version of the `tap_code` function is used here
-  //             // because KC_HASH is a non-basic keycode.
-  //             tap_code16(KC_SCLN);
-  //         }
-  //         // do not continue with default tap action
-  //         // if the MT was pressed or released, but not held
-  //         return false;
-  //     }
-  //     break;
   case LEADER:
     start_leading();
     return false;
@@ -257,7 +233,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   // adding a seconds breaks both!?
   update_swapper(&sw_win_active, KC_LGUI, KC_GRV, SW_WIN, keycode, record,
                  NULL);
-  process_nshot_state_pre(keycode, record);
+  // process_nshot_state_pre(keycode, record);
+  process_nshot_state(keycode, record);
   bool res = _process_record_user(keycode, record);
   // If `false` was returned, then we did something special and should register
   // that manually.
@@ -268,7 +245,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     register_key_to_repeat(keycode);
     last_mod_state = get_mods();
   }
-  process_nshot_state_post(keycode, record);
+  //process_nshot_state_post(keycode, record);
   return res;
 }
 
@@ -292,7 +269,7 @@ bool tap_hold(uint16_t keycode) {
   case KC_RIGHT:
   case KC_TILD:
   case KC_GRV:
-  case QU:
+//  case QU:
   case ARROW_R:
   case ARROW_L:
   // case KC_DOT:
@@ -323,38 +300,11 @@ void tap_hold_send_hold(uint16_t keycode) {
   case UNDER:
     tap_code16(KC_EXLM);
     break;
-//  case BRACE:
-//    if (mod_state & MOD_MASK_ALT) {
-//      clear_mods(); //
-//      clear_oneshot_mods();
-//      clear_keyboard(); // TODO find out why I need this!?
-//      tap_code16(KC_RBRC);
-//      set_mods(mod_state);
-//    } else {
-//      tap_code16(KC_RCBR);
-//    }
-//    break;
-//  case LPAREN:
-//    tap_code16(KC_LPRN);
-//    tap_code16(KC_RPRN);
-//    tap_code16(KC_LEFT);
-//    break;
   case KC_LT:
     tap_code16(KC_LT);
     tap_code16(KC_GT);
     tap_code16(KC_LEFT);
     break;
-//  case RPAREN:
-//    if (mod_state & MOD_MASK_ALT) {
-//      clear_mods(); //
-//      clear_oneshot_mods();
-//      clear_keyboard(); // TODO find out why I need this!?
-//      tap_code16(KC_LBRC);
-//      set_mods(mod_state);
-//    } else {
-//      tap_code16(KC_RCBR);
-//    }
-//    break;
   case COPY_PASTE:
     SEND_STRING(SS_DOWN(X_LGUI) SS_TAP(X_V) SS_UP(X_LGUI));
     break;
@@ -374,9 +324,7 @@ void tap_hold_send_hold(uint16_t keycode) {
     break;
   case KC_DOT:
     break;
-  case QU:
-    send_string("Qu");
-    break;
+  // TODO This sends QU on shift!?
   case KC_LEFT:
     SEND_STRING(SS_DOWN(X_LGUI) SS_TAP(X_LEFT) SS_UP(X_LGUI));
     return;
@@ -466,42 +414,6 @@ void tap_hold_send_tap(uint16_t keycode) {
   case GRV:
     tap_undead_key(true, KC_GRV);
     break;
-  case QU:
-    send_string("qu");
-    break;
-//  case BRACE:
-//    if (mod_state & MOD_MASK_SHIFT) {
-//      clear_mods();
-//      clear_keyboard(); // TODO find out why I need this!?
-//      clear_oneshot_mods();
-//      tap_code16(KC_LBRC);
-//      set_mods(mod_state);
-//    } else {
-//      tap_code16(KC_LCBR);
-//    }
-//    break;
-//  case LPAREN:
-//    if (mod_state & MOD_MASK_SHIFT) {
-//      clear_mods(); //
-//      clear_oneshot_mods();
-//      clear_keyboard(); // TODO find out why I need this!?
-//      tap_code16(KC_LBRC);
-//      set_mods(mod_state);
-//    } else {
-//      tap_code16(KC_LPRN);
-//    }
-//    break;
-//  case RPAREN:
-//    if (mod_state & MOD_MASK_SHIFT) {
-//      clear_mods(); //
-//      clear_oneshot_mods();
-//      clear_keyboard(); // TODO find out why I need this!?
-//      tap_code16(KC_RBRC);
-//      set_mods(mod_state);
-//    } else {
-//      tap_code16(KC_RPRN);
-//    }
-//    break;
   default:
     tap16_repeatable(keycode);
   }

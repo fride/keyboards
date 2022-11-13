@@ -2,7 +2,14 @@
 
 #include QMK_KEYBOARD_H
 
-enum layers { _BASE, _NAV, _NUM,_SYM, _MODS, _FUN};
+enum layers {
+    _BASE,
+    _NAV,
+    _NUM,
+    _NUMBLOCK,
+    _SYM,
+    _MODS,
+    _FUN};
 
 enum custom_keycodes {
   QUOTE = SAFE_RANGE,
@@ -15,6 +22,7 @@ enum custom_keycodes {
 
   // Smart caps lock and layers that turn off on certain keys
   CAPSWORD,
+  MINS,
   NUMWORD,
   SENTENCE,
   CAMEL,
