@@ -92,22 +92,36 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
   // TODO this shift behaviour is rather strange! ;)
   case QU:
       if (record->event.pressed) {
-          if (mod_state & MOD_MASK_SHIFT) {
+          if (mod_state & MOD_MASK_SHIFT || oneshot_mod_state & MOD_MASK_SHIFT) {
               send_string("Qu");
           } else {
               send_string("qu");
           }
      }
     break;
+
+  // TODO for unknown reasons this does not work with one shot shift!. :)
+  case SLASH:
+    if (!record->event.pressed) {
+      if (mod_state & MOD_MASK_SHIFT || oneshot_mod_state & MOD_MASK_SHIFT) {
+          tap16_repeatable(KC_ASTR);
+      } else {
+         tap16_repeatable(KC_SLSH);
+      }
+      return true;
+    }
+    break;
+
   case MINS:
     if (record->event.pressed) {
-        if (mod_state & MOD_MASK_SHIFT) {
+        if (mod_state & MOD_MASK_SHIFT || oneshot_mod_state & MOD_MASK_SHIFT) {
             tap16_repeatable(KC_PLUS);
         } else {
             tap16_repeatable(KC_MINS);
         }
         return true;
     }
+
   case CAMEL:
     enable_xcase_with(OSM(MOD_LSFT));
     return true;
@@ -116,26 +130,11 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
       tap_code16(S(KC_G));
     }
     return false;
+
   case KEBAB:
     enable_xcase_with(KC_MINS);
     return true;
-  case SLASH:
-    if (!record->event.pressed) {
-      if (mod_state & MOD_MASK_SHIFT) {
-        clear_mods(); //
-        clear_oneshot_mods();
-        clear_keyboard(); // TODO find out why I need this!?   ,
-        tap_code16(KC_ASTR);
-        set_mods(mod_state);
-      } else {
-        clear_mods(); //
-        clear_oneshot_mods();
-        clear_keyboard(); // TODO find out why I need this!?
-        tap_code16(KC_SLSH);
-        set_mods(mod_state);
-      }
-    }
-    break;
+
   case MOUSE_TGL: {
     if (record->event.pressed) {
       // see https://docs.qmk.fm/#/feature_layers
