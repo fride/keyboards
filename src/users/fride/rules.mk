@@ -35,3 +35,4 @@ SRC += features/nshot_mod.c
 SRC += features/leader.c
 SRC += features/utils.c
 SRC += features/tap_hold.c
+SRC += features/layer_lock.c

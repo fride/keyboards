@@ -7,6 +7,7 @@
 #include "features/swapper.h"
 #include "features/tap_hold.h"
 #include "features/utils.h"
+#include "features/layer_lock.h"
 
 void tap16_repeatable(uint16_t keycode) {
   tap_code16(keycode);
@@ -67,6 +68,7 @@ uint8_t last_mod_state = 0;
 uint16_t last_key_code;
 
 bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
+  if (!process_layer_lock(keycode, record, LLOCK)) { return false; }
   if (!process_leader(keycode, record)) {
     return false;
   }
@@ -99,7 +101,6 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
           }
      }
     break;
-
   // TODO for unknown reasons this does not work with one shot shift!. :)
   case SLASH:
     if (!record->event.pressed) {
@@ -187,7 +188,7 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
     // layer_move(_BASE);
     return false;
   case TILD:
-    tap_undead_key(record->event.pressed, KC_TILD);
+    tap_undead_key(record->event.pressed,  KC_TILD);
     return false;
   case CIRC:
     tap_undead_key(record->event.pressed, KC_CIRC);
@@ -266,7 +267,6 @@ bool tap_hold(uint16_t keycode) {
   case KC_DLR:
   case KC_LEFT:
   case KC_RIGHT:
-  case KC_TILD:
   case KC_GRV:
 //  case QU:
   case ARROW_R:
@@ -321,9 +321,6 @@ void tap_hold_send_hold(uint16_t keycode) {
   case ARROW_L:
     send_string("<=");
     break;
-  case KC_DOT:
-    break;
-  // TODO This sends QU on shift!?
   case KC_LEFT:
     SEND_STRING(SS_DOWN(X_LGUI) SS_TAP(X_LEFT) SS_UP(X_LGUI));
     return;
@@ -361,10 +358,6 @@ void tap_hold_send_hold(uint16_t keycode) {
   case KC_LCBR:
     double_parens_left(keycode, KC_RCBR);
     return;
-  case KC_TILD:
-    set_oneshot_mods(MOD_BIT(KC_RGUI));
-    tap_code16(KC_TILD);
-    return;
    case KC_QUES:
        send_string("{:?}");
         return;
@@ -376,9 +369,14 @@ void tap_hold_send_hold(uint16_t keycode) {
 
 void tap_hold_send_tap(uint16_t keycode) {
   mod_state = get_mods();
+  oneshot_mod_state = get_oneshot_mods();
   switch (keycode) {
   case DOT:
-      tap16_repeatable(KC_DOT);
+      if ((mod_state & MOD_MASK_SHIFT) || (oneshot_mod_state & MOD_MASK_SHIFT)) {
+        tap16_repeatable(S(KC_DOT));
+      } else {
+          tap16_repeatable(KC_DOT);
+      }
       break;
   case COMM:
     tap16_repeatable(KC_COMM);

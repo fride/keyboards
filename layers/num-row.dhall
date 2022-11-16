@@ -23,9 +23,9 @@ let _______ = "KC_TRNS"
 in types.Layer::
 { name = "_NUM"
 , keys = [
-           "KC_COMM", "KC_DOT",  "KC_MINS", "KC_P",   _______,      "KC_BSLS",   "KC_COMM", "KC_DOT",  "KC_MINS", "KC_SLSH",
+           "KC_J",    "NUM_G",  "KC_NO",    "KC_P",   _______,      "KC_BSLS",   "KC_COMM", "KC_DOT",  "KC_MINS", "KC_SLSH",
            ___7___,   ___5___,   ___3___,   ___1___,  "NUM_G",      "KC_SLSH",  ___2___,   ___4___,    ___6___,   ___8___,
            "SLASH",    "KC_X",   _______,    ___9___,  _______,     "KC_P",     ___0___,    "KC_O",    "KC_K",    "KC_J",
-                                           "NAV_SPC", "KC_NO",      "KC_NO",   "KC_NO" -- TODO what would be better here?
+                                           "NAV_SPC", "KC_K",       "KC_NO",   "KC_NO" -- TODO what would be better here?
          ]
 }

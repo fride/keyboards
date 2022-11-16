@@ -15,7 +15,7 @@ enum custom_keycodes {
   QUOTE = SAFE_RANGE,
   REPEAT,
   LEADER,
-
+  LLOCK,
   CIRC,
   GRV,
   TILD,

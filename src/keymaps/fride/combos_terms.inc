@@ -19,6 +19,9 @@ case combo_arrow_right:
 case combo_q:
    return COMBO_TERM + 10;
 
+case combo_grv:
+   return COMBO_TERM + 10;
+
 case combo_qu:
    return COMBO_TERM + 10;
 
@@ -40,9 +43,6 @@ case combo_del:
 case combo_eql:
    return COMBO_TERM + 10;
 
-case combo_num:
-   return COMBO_TERM + 5;
-
 case combo_quote:
    return COMBO_TERM + 0;
 
@@ -55,10 +55,10 @@ case combo_tab_mod:
 case combo_colon_sym:
    return COMBO_TERM + 0;
 
-case combo_enter:
-   return COMBO_TERM + 10;
+case combo_semicolon:
+   return COMBO_TERM + 0;
 
-case combo_double_quote:
+case combo_enter:
    return COMBO_TERM + 10;
 
 case combo_lshift:
