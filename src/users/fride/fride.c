@@ -23,6 +23,39 @@ void triple_tap(uint16_t keycode) {
 uint8_t mod_state;
 uint8_t oneshot_mod_state;
 uint16_t last_keycode;
+bool accent = false;
+
+bool process_accents(uint16_t keycode, bool down, keyrecord_t *record){
+        if (!accent) {
+            return true;
+        }
+//        if (down) {
+//            return true;
+//        }
+        accent = false;
+        switch (keycode) {
+            case LT(_NUM, KC_A): // This is a beast!
+                SEND_STRING(SS_RALT("a"));
+                return false;
+            case KC_E:
+                SEND_STRING(SS_RALT("e"));
+                return false;
+            case KC_I:
+                tap16_repeatable(A(keycode));
+                return false;
+            case KC_O:
+                tap16_repeatable(A(keycode));
+                return false;
+            case KC_U:
+                tap16_repeatable(A(keycode));
+                return false;
+            case KC_S:
+                tap16_repeatable(A(keycode));
+                return false;
+            default:
+               return true;
+        }
+}
 
 // Case modes
 bool terminate_case_modes(uint16_t keycode, const keyrecord_t *record) {
@@ -68,6 +101,7 @@ uint8_t last_mod_state = 0;
 uint16_t last_key_code;
 
 bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
+  bool down = record->event.pressed;
   if (!process_layer_lock(keycode, record, LLOCK)) { return false; }
   if (!process_leader(keycode, record)) {
     return false;
@@ -87,11 +121,30 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return false;
   }
+  // this is like some leader key maybe?
+  if (!process_accents(keycode, down, record)) {
+    return false;
+  }
+
   mod_state = get_mods();
   oneshot_mod_state = get_oneshot_mods();
 
   switch (keycode) {
-  // TODO this shift behaviour is rather strange! ;)
+    case TILD:
+        if (record->event.pressed) {
+            // nothing? Maybe later!?
+        } else {
+            accent = true;
+        }
+        return false;
+  // one time shift on press, tap toggle else
+  // see https://precondition.github.io/home-row-mods for source!
+  case L_THUMB:
+    if (record->event.pressed && record->tap.count > 0) {
+          trigger_one_shot(OS_LSFT);
+          return false;
+      }
+    break;
   case QU:
       if (record->event.pressed) {
           if (mod_state & MOD_MASK_SHIFT || oneshot_mod_state & MOD_MASK_SHIFT) {
@@ -187,9 +240,6 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
     clear_oneshot_mods();
     // layer_move(_BASE);
     return false;
-  case TILD:
-    tap_undead_key(record->event.pressed,  KC_TILD);
-    return false;
   case CIRC:
     tap_undead_key(record->event.pressed, KC_CIRC);
     return false;
@@ -201,12 +251,12 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
       enable_caps_word();
     }
     return false;
-  case CLN_SYM:
-    if (record->tap.count && record->event.pressed) {
-      tap16_repeatable(KC_COLON);
-      return false;
-    }
-    break;
+//  case CLN_SYM:
+//    if (record->tap.count && record->event.pressed) {
+//      tap16_repeatable(KC_COLON);
+//      return false;
+//    }
+//    break;
   case GRV:
     tap_undead_key(true, KC_GRV);
     tap_undead_key(true, KC_GRV);
@@ -280,6 +330,7 @@ bool tap_hold(uint16_t keycode) {
   case DOT:
   case COMM:
   case COPY_PASTE:
+  case NAV_SHIFT:
     return true;
   default:
     return false;
@@ -290,6 +341,8 @@ void tap_hold_send_hold(uint16_t keycode) {
   disable_caps_word();
   mod_state = get_mods();
   switch (keycode) {
+  case NAV_SHIFT:
+  break;
   case DOT:
     tap16_repeatable(KC_EXLM);
     break;

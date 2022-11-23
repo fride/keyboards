@@ -1,10 +1,10 @@
 AUTO_SHIFT_ENABLE = no
-COMBO_ENABLE = yes
+COMBO_ENABLE = no
 MOUSEKEY_ENABLE = yes
 TAP_DANCE_ENABLE = no
 
 # Easy definition of combos
-VPATH +=  keyboards/gboards/
+# VPATH +=  keyboards/gboards/
 
 APPLY_USERSPACE			= yes
 

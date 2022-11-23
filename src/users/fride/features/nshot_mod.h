@@ -32,3 +32,6 @@ bool is_nshot_cancel_key(uint16_t keycode);
 
 // Keys that should not count towards n-shot usage (e.g., layer toggles)
 bool is_nshot_ignored_key(uint16_t keycode, keyrecord_t *record);
+
+// trigger one shot externally
+void trigger_one_shot(uint16_t  trigger);

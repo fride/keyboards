@@ -11,13 +11,13 @@ let Text/concatSep = https://prelude.dhall-lang.org/Text/concatSep
 let List/map = https://prelude.dhall-lang.org/List/map
 
 
-let layer_to_text = \(layer : Layer.Type) ->
+let layer_to_text = \(layout: Text) -> \(layer : Layer.Type) ->
     let key_string = Text/concatSep "," layer.keys
     in
-        "   [${layer.name}] = LAYOUT_split_3x5_2(${key_string})"
+        "   [${layer.name}] = ${layout}(${key_string})"
 
-let layers_to_text = \(layers: List Layer.Type) ->
-    let layer_text = List/map Layer.Type Text layer_to_text layers
+let layers_to_text = \(layout: Text) -> \(layers: List Layer.Type) ->
+    let layer_text = List/map Layer.Type Text (layer_to_text layout) layers
     let layer_code = Text/concatSep ",\n" layer_text
     in
         ''
@@ -31,11 +31,10 @@ let layers_to_text = \(layers: List Layer.Type) ->
         #include "keycodes.h"
         #include "g/keymap_combo.h"
 
-
         const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             ${layer_code}
         };
         #include "combos_terms.inc"
         ''
 
-in \(keymap: Keymap.Type) -> layers_to_text keymap.layers
+in \(keymap: Keymap.Type) -> layers_to_text keymap.layout keymap.layers

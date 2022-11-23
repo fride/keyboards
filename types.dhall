@@ -2,4 +2,5 @@
 , Layer = ./types/Layer.dhall
 , Keymap = ./types/Keymap.dhall
 , Binding = ./types/Binding.dhall
+, HomeBlock = ./types/HomeBlock.dhall
 }

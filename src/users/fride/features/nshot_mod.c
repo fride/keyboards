@@ -12,8 +12,20 @@ nshot_state_t  nshot_states[] = {
     {TS_LCTL, MOD_BIT(KC_LCTL), 2, os_up_unqueued, 0}
 };
 
-uint8_t        NUM_NSHOT_STATES = sizeof(nshot_states) / sizeof(nshot_state_t);
+uint8_t  NUM_NSHOT_STATES = sizeof(nshot_states) / sizeof(nshot_state_t);
 
+void trigger_one_shot(uint16_t  trigger) {
+    nshot_state_t *curr_state = NULL;
+    for (int i = 0; i < NUM_NSHOT_STATES; ++i) {
+        curr_state = &nshot_states[i];
+
+        if (trigger ==curr_state->trigger) {
+            register_mods(curr_state->modbit);
+            curr_state->state = os_up_queued;
+            curr_state->count = 0;
+        }
+    }
+}
 void process_nshot_state(uint16_t keycode, keyrecord_t *record) {
     nshot_state_t *curr_state = NULL;
 
@@ -114,7 +126,8 @@ bool is_nshot_ignored_key(uint16_t keycode, keyrecord_t *record) {
   case OS_LCTL:  // OS Mods
   case OS_LALT:  // OS Mods
   case OS_LGUI:  // OS Mods
-  case QUOT_MOD: // Two-shot ctrl
+  case TILD: // Needed to write capital äs and ös and so on ....;k
+  case L_THUMB: // ON THE THUMB<
     return true;
   case NAV_SPC: // TODO -> check if this is a keyup after layer switch or after
                 // ....
