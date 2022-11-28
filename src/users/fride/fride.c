@@ -137,6 +137,13 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
             accent = true;
         }
         return false;
+  // layer toggle or repeat key :-)
+//  case UREPEAT:
+//    if (record->event.pressed && record->tap.count > 0) {
+//        update_repeat_key(record);
+//        return false;
+//    }
+//    break;
   // one time shift on press, tap toggle else
   // see https://precondition.github.io/home-row-mods for source!
   case L_THUMB:

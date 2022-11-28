@@ -5,9 +5,8 @@
 enum layers {
     _BASE,
     _NAV,
-    _RAISE,
-    _LOWER,
-    _NUM, // DEPRECTATED!
+    _ACCENT,
+    _NUM,
     _NUMBLOCK,
     _SYM,
     _MODS,
@@ -102,18 +101,22 @@ enum custom_keycodes {
 
 #define TD_SCLN TD(SCL_END)
 
-
 // latest clean stuff
-#define ___R___ KC_R
+#define ___R___ LT(_SYM, KC_R)
 #define ___C___ KC_C
-#define ___I___ LT(_NUMBLOCK, KC_I)
+#define ___I___ LT(_SYM, KC_I)
+#define ___N___ KC_N
+#define ___H___ KC_H
+#define ___P___ KC_P
+#define ___F___ KC_F
+#define ___E___ KC_E
 #define ___D___ LGUI_T(KC_D)
 #define ___U___ RGUI_T(KC_U)
-#define ___S___ KC_S
-#define ___T___ LT(_NUM, KC_T)
-#define ___A___ LT(_NUM, KC_A)
+#define ___S___ LT(_NUMBLOCK, KC_S)
+#define ___T___ LSFT_T(KC_T)
+#define ___A___ LSFT_T(KC_A)
 #define ___M___ LALT_T(KC_M)
 #define ___O___ RALT_T(KC_O)
-#define ___L___ LT(_SYM, KC_L)
+#define ___L___ LT(_NUM, KC_L)
 #define _SPACE_ LT(_NAV, KC_SPC)
 #define L_THUMB LT(_NAV, SHIFT)

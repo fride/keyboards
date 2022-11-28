@@ -16,6 +16,10 @@ let num = types.Layer::{
     name="_NUM",
    keys = redox.mk_layer ./layers/numbers.dhall
 }
+let numblock = types.Layer::{
+    name="_NUMBLOCK",
+   keys = redox.mk_layer ./layers/numblock.dhall
+}
 
 let sym =types.Layer::{
     name="_SYM",
@@ -29,6 +33,7 @@ let keymap =
       , layers = [base
                           , navigation
                           , num
+                          , numblock
                           , sym]
       , combos = ./redox/combos.dhall
       }

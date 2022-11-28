@@ -20,3 +20,4 @@ and many others.
 * Finding a new layout
  TODO https://discord.com/channels/894632051028938873/930484366260441139/982930412470943774
  https://cdn.discordapp.com/attachments/930484366260441139/982930412269629450/Screenshot_2022-06-05_at_10-53-08_Keyboard_Layout_Editor.png
+

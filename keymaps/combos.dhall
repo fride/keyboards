@@ -3,6 +3,55 @@ let types = ../types.dhall
 let kp = types.Binding.kp
 
 let Combo = types.Combo
+let cmb = Combo.combo
+
+let test = [
+      cmb "combo_reset" 10 [ 0, 9 ] "RESET"
+    , cmb "combo_canel" 10 [ 10, 19 ] "CANCEL"
+    , cmb "combo_enter" 10 [ 16, 17, 18 ] "KC_ENTER"
+    , Combo.combo "combo_caps" 5 [ 26, 28 ] "CAPSWORD"
+--- new and inspired by https://github.com/urob/zmk-config/
+--- symbols!
+    , cmb  "s1" 5 [1,2] "KC_ESC"
+
+    , cmb  "s3" 5 [14,15] "ARROW_L"
+    , cmb  "s2" 5 [16,15] "ARROW_R"
+--
+    ,cmb  "s4" 5 [6,7] "KC_BSPC"
+    ,cmb  "s5" 5 [7,8] "KC_DEL"
+--
+    ,cmb  "s6" 5 [1,11] "KC_AT"
+    ,cmb  "s7" 5 [2,12] "KC_HASH"
+    ,cmb  "s8" 5 [3,13] "KC_DLR"
+    ,cmb  "s9" 5 [4,14] "KC_PERC"
+--
+    ,cmb  "s10" 5 [5,15] "KC_CIRC"
+    ,cmb  "s11" 5 [6,16] "KC_PLUS"
+    ,cmb  "s12" 5 [7,17] "KC_ASTR"
+    ,cmb  "s13" 5 [8,18] "KC_AMPR"
+--
+    ,cmb  "s14" 5 [11,12] "KC_EXLM"
+    ,cmb  "s16" 5 [12,13] "KC_QUES"
+--
+    ,cmb  "s17" 5 [16,17] "KC_LPRN"
+    ,cmb  "s18" 5 [17,18] "KC_RPRN"
+--
+    ,cmb  "s19" 5 [11,21] "KC_GRV"
+    ,cmb  "s20" 5 [12,22] "KC_BSLS"
+    ,cmb  "s21" 5 [13,23] "KC_EQL"
+    ,cmb  "s22" 5 [14,24] "KC_TILD"
+--
+    ,cmb  "s23" 5 [15,25] "KC_UNDS"
+    ,cmb  "s24" 5 [16,26] "KC_MINS"
+    ,cmb  "s25" 5 [17,27] "KC_SLSH"
+    ,cmb  "s27" 5 [18,28] "KC_PIPE"
+--
+    ,cmb  "s28" 5 [21,22] "KC_LCBR"
+    ,cmb  "s29" 5 [22,23] "KC_RCBR"
+--
+    ,cmb  "s30" 5 [26,27] "KC_LBRC"
+    ,cmb  "s31" 5 [27,28] "KC_RBRC"
+]
 {-
  /*                KEY POSITIONS
 
@@ -13,10 +62,11 @@ let Combo = types.Combo
           ╰───────╮ 30  31     │ │     32  33 ╭───────╯
                   ╰────────────╯ ╰────────────╯        */
 -}
-in  [ Combo.combo "combo_numword" 20 [ 30, 33 ] "NUMWORD"
+let old =  [ Combo.combo "combo_numword" 20 [ 30, 33 ] "NUMWORD"
     , Combo.combo "combo_reset" 10 [ 0, 9 ] "RESET"
     , Combo.combo "combo_canel" 10 [ 10, 19 ] "CANCEL"
-    , Combo.combo "combo_arrow_left" 10 [ 4, 14 ] "ARROW_L"
+-- Vertical Combos
+    , Combo.combo "combo_arrow_left" 10 [ 3, 13 ] "ARROW_L"
     , Combo.combo "combo_arrow_right" 10 [ 6, 16 ] "ARROW_R"
 --
 -- home row combos
@@ -27,7 +77,6 @@ in  [ Combo.combo "combo_numword" 20 [ 30, 33 ] "NUMWORD"
     , Combo.combo "combo_min" 10 [ 1, 3 ] "KC_MINS"
     -- need to find a nice spot for one time shifts!
     , Combo.combo "combo_shift1" 10 [ 14, 13 ] "OS_LSFT"
-    , Combo.combo "combo_shift2" 10 [ 15, 16 ] "CAPSWORD"
     , Combo.combo "combo_backspace" 10 [ 6, 7 ] "KC_BSPC"
     , Combo.combo "combo_del" 10 [ 7, 8 ] "KC_DEL"
     , Combo.combo "combo_eql" 10 [ 6, 8 ] "KC_EQL"
@@ -44,11 +93,14 @@ in  [ Combo.combo "combo_numword" 20 [ 30, 33 ] "NUMWORD"
     , Combo.combo "combo_gui" 5 [ 22, 23 ] "OS_LGUI"
     , Combo.combo "combo_alt" 5 [ 21, 23 ] "OS_LALT"
     , Combo.combo "combo_rshift" 5 [ 27, 28 ] "OS_LSFT"
-    , Combo.combo "combo_caps" 5 [ 26, 28 ] "CAPSWORD"
---
--- Thumbs combos
---
 
+-- home row both sided
+    , Combo.combo "combo_capsword" 10 [ 12, 17 ] "CAPSWORD"
+--
+-- Vertical
+--
+    , Combo.combo "combo_caps" 5 [ 26, 28 ] "CAPSWORD"
 --
 --
     ]
+in test
