@@ -146,12 +146,13 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
 //    break;
   // one time shift on press, tap toggle else
   // see https://precondition.github.io/home-row-mods for source!
-  case L_THUMB:
-    if (record->event.pressed && record->tap.count > 0) {
-          trigger_one_shot(OS_LSFT);
-          return false;
-      }
-    break;
+// TODO write down what I did but I don't use it anymore!
+//  case L_THUMB:
+//    if (record->event.pressed && record->tap.count > 0) {
+//          trigger_one_shot(OS_LSFT);
+//          return false;
+//      }
+//    break;
   case QU:
       if (record->event.pressed) {
           if (mod_state & MOD_MASK_SHIFT || oneshot_mod_state & MOD_MASK_SHIFT) {
@@ -328,14 +329,11 @@ bool tap_hold(uint16_t keycode) {
 //  case QU:
   case ARROW_R:
   case ARROW_L:
-  // case KC_DOT:
   case ANFZCH:
   case UNDER:
   case KC_LT:
   case KC_QUES:
   case KC_HASH:
-  case DOT:
-  case COMM:
   case COPY_PASTE:
   case NAV_SHIFT:
     return true;
@@ -350,12 +348,6 @@ void tap_hold_send_hold(uint16_t keycode) {
   switch (keycode) {
   case NAV_SHIFT:
   break;
-  case DOT:
-    tap16_repeatable(KC_EXLM);
-    break;
-  case COMM:
-    tap16_repeatable(KC_QUES);
-    break;
   case UNDER:
     tap_code16(KC_EXLM);
     break;
@@ -431,16 +423,6 @@ void tap_hold_send_tap(uint16_t keycode) {
   mod_state = get_mods();
   oneshot_mod_state = get_oneshot_mods();
   switch (keycode) {
-  case DOT:
-      if ((mod_state & MOD_MASK_SHIFT) || (oneshot_mod_state & MOD_MASK_SHIFT)) {
-        tap16_repeatable(S(KC_DOT));
-      } else {
-          tap16_repeatable(KC_DOT);
-      }
-      break;
-  case COMM:
-    tap16_repeatable(KC_COMM);
-        break;
   case KC_LT:
     tap_code16(KC_LT);
     break;

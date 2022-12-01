@@ -4,6 +4,7 @@ let ferris = ./ferris.dhall
 
 let base = types.Layer::{
    name="_BASE",
+   -- keys = ferris.mk_layer ./layers/whorf.dhall
    keys = ferris.mk_layer ./layers/hands-down-platinium.dhall
 }
 

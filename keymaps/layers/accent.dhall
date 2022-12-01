@@ -2,7 +2,7 @@
 
 let types = ../../types.dhall
 in  types.HomeBlock::{
-    , l1 = [ "COMM",     "DOT",    "A(KC_U)", "KC_C",    "KC_V" ]
+    , l1 = [ "KC_NO",     "KC_NO",    "A(KC_U)", "KC_C",    "KC_V" ]
     , l2 = [ "A(KC_A)",  "A(KC_O)",   "KC_E",   "A(KC_S)", "KC_G"]
     , l3 = [ "KC_SCLN",  "KC_P",   "KC_QUOT", "KC_W",    "KC_Z" ]
 

@@ -19,6 +19,8 @@ let ___8___ = SFT "KC_8"
 let ___0___ = "KC_0"
 let _______ = "KC_TRNS"
 
+-- see https://www.reddit.com/r/ErgoMechKeyboards/comments/mbf7w6/comment/gs35676/?utm_source=share&utm_medium=web2x&context=3
+-- for ideas
 in types.HomeBlock::{
     l1 = [ "KC_J",    "NUM_G",  "KC_NO",    "KC_P",   _______]
    , l2 = [___7___,   ___5___,   ___3___,   ___1___,  "NUM_G"]
