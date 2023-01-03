@@ -134,25 +134,26 @@ enum custom_keycodes {
 #define ___R___ LT(_SYM, KC_R)
 #define ___C___ KC_C
 #define ___I___ LT(_SYM, KC_I)
-
-#define ___N___ LGUI_T(KC_N)
-#define ___H___ LALT_T(KC_H)
-#define ___P___ LCTL_T(KC_P)
+// nt ae
+// md uo
 #define ___T___ LSFT_T(KC_T)
-
+#define ___D___ LGUI_T(KC_D)
+#define ___M___ LALT_T(KC_M)
+#define ___P___ KC_P
+#define ___H___ KC_H
+#define ___N___ KC_N
 
 #define ___A___ LSFT_T(KC_A)
-#define ___E___ RGUI_T(KC_E)
-#define __DOT__ RCTL_T(KC_COMM)
-#define _COMM__ RALT_T(KC_DOT)
+#define ___E___ KC_E
+#define ___U___ RGUI_T(KC_U)
+#define ___O___ RALT_T(KC_O)
 
-
+#define __DOT__ KC_DOT
+#define _COMM__ KC_COMM
 #define ___F___ KC_F
-#define ___D___ KC_D
-#define ___U___ KC_U
+
 #define ___S___ LT(_NUMBLOCK, KC_S)
-#define ___M___ KC_M
-#define ___O___ KC_O
+
 #define ___L___ LT(_NUM, KC_L)
 #define _SPACE_ LT(_NAV, KC_SPC)
 #define L_THUMB LT(_NAV, SHIFT)

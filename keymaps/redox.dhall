@@ -1,8 +1,8 @@
 let types = ../types.dhall
 
 let row0 =
-    ["TG(_SYM)"   ,"KC_1"    ,"KC_2"    ,"KC_3"    ,"KC_4"    ,"KC_5"]
-  # ["KC_6"    ,"KC_7"    ,"KC_8"    ,"KC_9"    ,"KC_0"    ,"KC_ESC"]
+    ["TG(_SYM)"   ,"KC_7"    ,"KC_5"    ,"KC_3"    ,"KC_1"    ,"KC_9"]
+  # ["KC_8"    ,"KC_0"    ,"KC_2"    ,"KC_4"    ,"KC_6"    ,"KC_ESC"]
 
 let row1 = \(left: List Text) -> \(right: List Text) ->
     ["OS_LSFT"] # left # ["KC_NO"] # ["KC_NO"] # right # ["KC_NO"]

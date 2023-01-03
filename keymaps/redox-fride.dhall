@@ -4,7 +4,7 @@ let redox = ./redox.dhall
 
 let base = types.Layer::{
    name="_BASE",
-   keys = redox.mk_layer ./layers/hands-down-platinium.dhall
+   keys = redox.mk_layer ./layers/hands-down-rhodium.dhall
 }
 
 let navigation = types.Layer::{
@@ -28,7 +28,7 @@ let sym =types.Layer::{
 
 let keymap =
       types.Keymap::{
-      , name = "Jans Hands Down Neu Platinium"
+      , name = "Jans Layout"
       , layout = "LAYOUT"
       , layers = [base
                           , navigation

@@ -20,9 +20,103 @@
         .thumb_4 {
             grid-column: 7;
         }
+        table {
+            border-collapse: collapse;
+            empty-cells: hide;
+        }
+        table, th, td {
+            border: 1px solid;
+        }
+        .keymap {
+            font-variant: all-petite-caps;
+            font-weight: bold;
+        }
+
+        .keymap td{
+            width: 2em;
+            height: 1.5em;
+        }
+        /*  Define the background color for all the EVEN background rows  */
+        .hcombo{
+            background: #dae5f4;
+        }
+        .vcombo{
+            background: #00D000;
+        }
     </style>
 </head>
 <body>
+    <table class="keymap">
+        <tr>
+            <td>j</td><td class="hcombo">Q</td>
+            <td>g</td><td class="hcombo">ESC</td>
+            <td>h</td><td class="hcombo"></td>
+            <td>p</td><td class="hcombo"></td>
+            <td>v</td><td class="hcombo"></td>
+<!--            -->
+            <td>q</td><td class="hcombo"></td>
+            <td>.</td><td class="hcombo">BCPS</td>
+            <td>/</td><td class="hcombo"></td>
+            <td>'</td><td class="hcombo"></td>
+            <td>REPEAT</td><td class="hcombo"></td>
+        </tr>
+        <tr>
+            <td class="vcombo"></td><td></td>
+            <td class="vcombo"></td><td></td>
+            <td class="vcombo"></td><td></td>
+            <td class="vcombo"></td><td></td>
+            <td class="vcombo"></td><td></td>
+            <td class="vcombo"></td><td></td>
+            <td class="vcombo"></td><td></td>
+            <td class="vcombo"></td><td></td>
+            <td class="vcombo"></td><td></td>
+            <td class="vcombo"></td><td></td>
+        </tr>
+        <tr>
+            <td>r</td><td class="hcombo"></td>
+            <td>s</td><td class="hcombo">!</td>
+            <td>n</td><td class="hcombo">?</td>
+            <td>t</td><td class="hcombo"></td>
+            <td>b</td><td class="hcombo"></td>
+            <td>,</td><td class="hcombo"></td>
+            <td>a</td><td class="hcombo"></td>
+            <td>e</td><td class="hcombo"></td>
+            <td>c</td><td class="hcombo"></td>
+            <td>i</td><td class="hcombo"></td>
+        </tr>
+        <tr>
+            <td class="vcombo"></td><td></td>
+            <td class="vcombo"></td><td>5</td>
+            <td class="vcombo"></td><td>3</td>
+            <td class="vcombo"></td><td>1</td>
+            <td class="vcombo"></td><td>7</td>
+            <td class="vcombo"></td><td></td>
+            <td class="vcombo"></td><td></td>
+            <td class="vcombo"></td><td></td>
+            <td class="vcombo"></td><td></td>
+            <td class="vcombo"></td><td></td>
+        </tr>
+        <tr>
+            <td>x</td><td class="hcombo"></td>
+            <td>f</td><td class="hcombo"></td>
+            <td>m</td><td class="hcombo"></td>
+            <td>d</td><td class="hcombo"></td>
+            <td>k</td><td class="hcombo"></td>
+            <td>z</td><td class="hcombo"></td>
+            <td>u</td><td class="hcombo"></td>
+            <td>o</td><td class="hcombo"></td>
+            <td>w</td><td class="hcombo"></td>
+            <td>y</td><td class="hcombo"></td>
+        </tr>
+        <tr>
+            <td colspan="6"></td>
+            <td colspan="2">SPACE</td>
+            <td colspan="2">Shift</td>
+            <td colspan="2">Ctrl</td>
+            <td colspan="2">L</td>
+            <td colspan="6"></td>
+        </tr>
+    </table>
     <ol class="layer">
         <li>J</li> <li>G</li> <li>H</li> <li>P</li> <li>V</li>
         <li>\</li> <li>.</li> <li>/</li> <li>'</li> <li>REPEAT</li>

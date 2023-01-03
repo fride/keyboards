@@ -4,8 +4,11 @@ let ferris = ./ferris.dhall
 
 let base = types.Layer::{
    name="_BASE",
-   -- keys = ferris.mk_layer ./layers/whorf.dhall
+   -- keys = ferris.mk_layer ./layers/semimak.dhall
+   -- keys = ferris.mk_layer ./layers/hands-down-rhodium.dhall
+   -- keys = ferris.mk_layer ./layers/dvorak.dhall
    keys = ferris.mk_layer ./layers/hands-down-platinium.dhall
+   -- keys = ferris.mk_layer ./layers/sturdy.dhall
 }
 
 let numblock = types.Layer::{
@@ -31,7 +34,7 @@ let accent = types.Layer::{
 
 let keymap =
       types.Keymap::{
-      , name = "BOO with I on the Thumb"
+      , name = "Rhodium Layout"
       , layout = "LAYOUT_split_3x5_2"
       , layers =
         [ base

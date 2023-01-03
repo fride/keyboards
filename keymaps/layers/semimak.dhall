@@ -5,7 +5,7 @@
 -}
 let types = ../../types.dhall
 
-let thumb_l= [ "L_THUMB", "OS_LGUI"]
+let thumb_l= [ "_SPACE_", "OS_LGUI"]
 let thumb_r = [ "OS_LCTL", "OS_LSFT"]
 
 in  types.HomeBlock::{

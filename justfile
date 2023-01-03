@@ -8,6 +8,13 @@ ferris: init
 
     cd qmk_firmware && qmk flash -km fride -kb ferris/0_2
 
+ferris_col: init
+    dhall text <<< './render/toKeymapSource.dhall ./keymaps/ferris-colemak.dhall' > qmk_firmware/keyboards/ferris/keymaps/fride/keymap.c
+    dhall text <<< './render/renderComboDefs.dhall ./keymaps/ferris-colemak.dhall' > qmk_firmware/keyboards/ferris/keymaps/fride/combos.def
+    dhall text <<< './render/renderComboTerms.dhall ./keymaps/ferris-colemak.dhall' > qmk_firmware/keyboards/ferris/keymaps/fride/combos_terms.inc
+
+    cd qmk_firmware && qmk flash -km fride -kb ferris/0_2
+
 redox: init
     dhall text <<< './render/toKeymapSource.dhall ./keymaps/redox-fride.dhall' > qmk_firmware/keyboards/redox/keymaps/fride/keymap.c
     dhall text <<< './render/renderComboDefs.dhall ./keymaps/redox-fride.dhall' > qmk_firmware/keyboards/redox/keymaps/fride/combos.def
