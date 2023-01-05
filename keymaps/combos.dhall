@@ -19,9 +19,10 @@ let test = [
 
 --- new and inspired by https://github.com/urob/zmk-config/
 --- symbols!
-    , cmb  "q" 5 [0,1] "KC_Q"
+    , cmb  "q" 5 [0,1] "QU"
     , cmb  "s1" 5 [1,2] "KC_ESC"
-
+    , cmb  "vim_cmd" 5 [2,3] "VIM_COLON"
+    , cmb  "dshift" 5 [3,4] "DOUBLE_SHIFT"
 
     , cmb  "s3" 5 [14,15] "ARROW_L"
     , cmb  "s2" 5 [16,15] "ARROW_R"

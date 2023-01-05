@@ -31,6 +31,12 @@ case q:
 case s1:
    return COMBO_TERM + 5;
 
+case vim_cmd:
+   return COMBO_TERM + 5;
+
+case dshift:
+   return COMBO_TERM + 5;
+
 case s3:
    return COMBO_TERM + 5;
 

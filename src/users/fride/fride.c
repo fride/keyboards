@@ -130,6 +130,12 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
   oneshot_mod_state = get_oneshot_mods();
 
   switch (keycode) {
+    case DOUBLE_SHIFT:
+        if (record->event.pressed) {
+            tap_code16(KC_LSFT);
+            tap_code16(KC_LSFT);
+        }
+        return false;
     case TILD:
         if (record->event.pressed) {
             // nothing? Maybe later!?

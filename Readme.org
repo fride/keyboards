@@ -6,6 +6,7 @@
     - https://sites.google.com/alanreiser.com/handsdown/home/hands-down-neu
     - https://keymapdb.com/keymaps/alterecco-zmk/
     - https://github.com/rayduck/pnohty
+    - https://github.com/urob/zmk-config
     - https://github.com/possumvibes/qmk_firmware/tree/1c9a9376ea256cfcfbf4b33d81b85763c974191c/users/possumvibes
     - https://getreuer.info/posts/keyboards/symbol-layer/index.html
 
