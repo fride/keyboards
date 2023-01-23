@@ -40,17 +40,14 @@ void update_key(uint16_t keycode, keyrecord_t *record) {
 
 void update_repeat_key(keyrecord_t *record) {
     switch (last_keycode) {
-        // case GRV:
-        //     tap_undead_key(record->event.pressed, SE_GRV);
-        //     break;
-        // case TILD:
-        //     tap_undead_key(record->event.pressed, SE_TILD);
-        //     break;
-        // case CIRC:
-        //     tap_undead_key(record->event.pressed, SE_CIRC);
-        //     break;
+        // see https://github.com/whorfian/whorf/blob/master/dyn-repeat.c
+        // see also https://github.com/whorfian/whorf/blob/master/README.md
+        case KC_SPACE:
+            // if space then trigger one time shift
+            add_oneshot_mods(MOD_BIT(KC_LSFT));
+            break;
         default:
-            update_key(last_keycode, record);
+           update_key(last_keycode, record);
     }
 }
 

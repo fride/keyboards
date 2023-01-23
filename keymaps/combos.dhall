@@ -7,7 +7,7 @@ let cmb = Combo.combo
 
 let test = [
 -- TWO SIDED COMBOS
-      cmb "combo_numw" 5 [30,33] "NUMWORD"
+--       cmb "combo_numw" 5 [30,33] "NUMWORD"
     , cmb "combo_caps" 5 [ 13, 16 ] "CAPSWORD"
     , cmb "combo_reset" 10 [ 0, 9 ] "RESET"
     , cmb "combo_canel" 10 [ 10, 19 ] "CANCEL"
@@ -24,8 +24,8 @@ let test = [
     , cmb  "vim_cmd" 5 [2,3] "VIM_COLON"
     , cmb  "dshift" 5 [3,4] "DOUBLE_SHIFT"
 
-    , cmb  "s3" 5 [14,15] "ARROW_L"
-    , cmb  "s2" 5 [16,15] "ARROW_R"
+    , cmb  "s3" 5 [13,14] "OS_LSFT"
+    , cmb  "s2" 5 [16,15] "OS_LSFT"
 --
     ,cmb  "s4" 5 [6,7] "KC_BSPC"
     ,cmb  "s5" 5 [7,8] "KC_DEL"

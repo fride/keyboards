@@ -6,5 +6,4 @@ in
         # block.l2 # block.r2
         # block.l3 # block.r3
         # block.thumb_l # block.thumb_r
-
 }

@@ -283,7 +283,7 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
     layer_off(_SYM);
     disable_caps_word();
     disable_num_word();
-    layer_move(_BASE);
+    layer_move(_ALPHA1);
     return false;
   }
   return true;
@@ -308,6 +308,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (res && record->event.pressed && keycode != NAV_SPC) {
     register_key_to_repeat(keycode);
     last_mod_state = get_mods();
+  } else if (keycode == NAV_SPC) {
+    register_key_to_repeat(KC_SPC);
   }
   //process_nshot_state_post(keycode, record);
   return res;

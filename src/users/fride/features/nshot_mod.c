@@ -126,8 +126,8 @@ bool is_nshot_ignored_key(uint16_t keycode, keyrecord_t *record) {
   case OS_LCTL:  // OS Mods
   case OS_LALT:  // OS Mods
   case OS_LGUI:  // OS Mods
-  case TILD: // Needed to write capital äs and ös and so on ....;k
-//  case L_THUMB: // ON THE THUMB<
+  case TO_ALPHA2:
+  case TO_ALPHA2_UPPER:
     return true;
   case NAV_SPC: // TODO -> check if this is a keyup after layer switch or after
                 // ....

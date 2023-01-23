@@ -3,11 +3,11 @@
 #include QMK_KEYBOARD_H
 
 enum layers {
-    _BASE,
+    _ALPHA1,
+    _ALPHA2,
+    _ALPHA2_UPPER,
     _NAV,
-    _ACCENT,
     _NUM,
-    _NUMBLOCK,
     _SYM,
     _MODS,
     _FUN
@@ -18,6 +18,7 @@ enum layers {
 enum {
     SCL_END,
 };
+
 enum custom_keycodes {
   QUOTE = SAFE_RANGE,
   REPEAT,
@@ -73,6 +74,10 @@ enum custom_keycodes {
   UNDER,
   DOUBLE_SHIFT
 };
+
+
+#define TO_ALPHA2       OSL(_ALPHA2)
+#define TO_ALPHA2_UPPER OSL(_ALPHA2_UPPER)
 
 #define NAV_SPC LT(_NAV, KC_SPC)
 

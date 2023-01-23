@@ -29,6 +29,20 @@ let whorf_l3 = ["KC_X",       "KC_J",         "LALT_T(KC_B)",    "LGUI_T(KC_Z)",
 let whorf_r3 = ["KC_P",       "LGUI_T(KC_C)", "LALT_T(KC_QUOT)", "KC_SCLN",      "KC_DOT"]
 
 {-
+  nerps: https://github.com/GalileoBlues/Layout-Wiki/wiki/AKL-layouts#nerps
+  x l d p v  z k o u ;
+  n r t s g  y h e i a /
+  q j m c w  b f ' , .
+-}
+
+let nerps_l1 = ["KC_X",       "KC_L",         "KC_D",            "KC_P",         "KC_V"]
+let nerps_r1 = ["KC_Z",       "KC_K",         "KC_O",            "KC_U",         "REPEAT"]
+let nerps_l2 = ["KC_N",       "KC_R",         "KC_T",            "LSFT_T(KC_S)", "KC_G"]
+let nerps_r2 = ["KC_Y",       "LSFT_T(KC_H)", "KC_E",            "LT(_NUM,KC_I)", "LT(_NUM,KC_A)"]
+let nerps_l3 = ["KC_Q",       "KC_J",         "LALT_T(KC_M)",    "LGUI_T(KC_C)", "KC_W"]
+let nerps_r3 = ["KC_B",       "LGUI_T(KC_F)", "LALT_T(KC_QUOT)", "KC_COMM",      "KC_DOT"]
+
+{-
 f l h v z  ' w u o y
 s r n t k  c d e a i
 x j b m q  p g , . /
@@ -49,16 +63,16 @@ let colmak_r1 = ["KC_J",       "KC_L",         "KC_U", "KC_Y", "KC_QUOT"]
 let colmak_r2 = ["KC_M",       "RSFT_T(KC_N)", "KC_E", "KC_I", "LT(2,KC_O)"]
 let colmak_r3 = ["KC_K",       "RGUI_T(KC_H)", "RALT_T(KC_COMM)", "KC_DOT", "REPEAT"]
 
-let base_thumb_l = ["LT(_NAV,KC_SPC)", "OSM(MOD_LSFT)"]
-let base_thumb_r = ["OSM(MOD_LCTL)", "OSL(_NUM)"]
+let base_thumb_l = ["NAV_SPC", "OSM(MOD_LSFT)"]
+let base_thumb_r = ["OSM(MOD_LCTL)", "REPEAT"]
 
 let base = types.HomeBlock::{
-      l1 = whorf_l1
-    , l2 = whorf_l2
-    , l3 = whorf_l3
-    , r1 = whorf_r1
-    , r2 = whorf_r2
-    , r3 = whorf_r3
+      l1 = nerps_l1
+    , l2 = nerps_l2
+    , l3 = nerps_l3
+    , r1 = nerps_r1
+    , r2 = nerps_r2
+    , r3 = nerps_r3
     , thumb_l = base_thumb_l
     , thumb_r = base_thumb_r
 }

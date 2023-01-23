@@ -1,10 +1,7 @@
 // generated
 uint16_t get_combo_term(uint16_t index, combo_t *combo) {
     switch (index) {
-        case combo_numw:
-   return COMBO_TERM + 5;
-
-case combo_caps:
+        case combo_caps:
    return COMBO_TERM + 5;
 
 case combo_reset:
