@@ -244,7 +244,7 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
       tap_code16(KC_DOT);
       tap_code16(KC_SPACE);
-      set_oneshot_mods(MOD_BIT(KC_RSHIFT));
+      set_oneshot_mods(MOD_BIT(KC_RSFT));
     }
     return false;
   case REPEAT:

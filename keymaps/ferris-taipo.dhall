@@ -5,14 +5,14 @@ let Ferris = ./ferris.dhall
 let base = types.HomeBlock::{
           l1 = ["KC_R",  "KC_S",    "KC_N",    "KC_I",  "KC_NO"]
         , l2 = ["KC_A",  "KC_O",    "KC_T",    "KC_E", "KC_W"]
-        , l3 = ["KC_NO", "KC_H", "KC_L",    "KC_D", "KC_NO"]
+        , l3 = ["KC_LSFT", "KC_H",    "KC_L",    "KC_D", "KC_NO"]
 
         , r1 = ["KC_NO", "KC_I", "KC_N", "KC_S", "KC_R"]
         , r2 = ["KC_W", "KC_E",  "KC_T", "KC_O", "KC_A"]
-        , r3 = ["KC_NO", "KC_D", "KC_L", "KC_H", "KC_NO"]
+        , r3 = ["KC_NO", "KC_D", "KC_L", "KC_H", "KC_RSFT"]
 
-    , thumb_l = ["KC_SPC", "KC_BSPC"]
-    , thumb_r = ["KC_BSPC", "KC_SPC"]
+    , thumb_l = ["LSFT_T(KC_SPC)", "KC_BSPC"]
+    , thumb_r = ["KC_BSPC", "LSFT_T(KC_SPC)"]
 }
 
 let keymap =

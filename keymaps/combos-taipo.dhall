@@ -7,12 +7,38 @@ let cmb = Combo.combo
 
 in [
 -- TWO SIDED COMBOS
-      -- cmb "combo_numw" 5 [30,33] "NUMWORD" does not work yet! ;)
+    -- cmb "combo_numw" 5 [30,33] "NUMWORD" does not work yet! ;)
     -- , cmb "combo_caps" 5 [ 13, 16 ] "CAPSWORD"
-    --, cmb "combo_reset" 10 [ 0, 9 ] "RESET"
+    cmb "combo_reset" 10 [ 20, 29 ] "RESET"
     --, cmb "combo_canel" 10 [ 10, 19 ] "CANCEL"
 
 -- taipo combos
+    , cmb "combo_l_R" 50 [ 0, 30 ]   "S(KC_R)"
+    , cmb "combo_l_gt" 50 [ 0, 31 ]   "S(KC_DOT)"
+
+    , cmb "combo_l_S" 50 [ 1, 30 ]   "S(KC_S)"
+    , cmb "combo_l_paran" 50 [ 1, 31 ]   "KC_RPRN"
+
+    , cmb "combo_l_N" 50 [ 2, 30 ]   "S(KC_N)"
+    , cmb "combo_l_rbr" 50 [ 2, 31 ]   "KC_RCBR"
+
+    , cmb "combo_l_I" 50 [ 3, 30 ]   "S(KC_I)"
+    , cmb "combo_l_r_paren" 50 [ 3, 31 ]   "KC_RPRN"
+
+    , cmb "combo_l_A" 50 [ 10, 30 ]   "S(KC_A)"
+    , cmb "combo_l_lt" 50 [ 10, 31 ]   "S(KC_COMM)"
+
+    , cmb "combo_l_O" 50 [ 11, 30 ]   "S(KC_O)"
+    , cmb "combo_l_l_paran" 50 [ 11, 31 ]   "KC_LPRN"
+
+    , cmb "combo_l_T" 50 [ 12, 30 ]   "S(KC_T)"
+    , cmb "combo_l_lbr" 50 [ 12, 31 ]   "KC_LCBR"
+
+    , cmb "combo_l_E" 50 [ 13, 30 ]   "S(KC_E)"
+    , cmb "combo_l_l_paren" 50 [ 13, 31 ]   "KC_LPRN"
+
+
+
     , cmb "combo_l_b" 50 [ 0, 1 ]   "KC_B"
     , cmb "combo_l_B" 50 [ 0, 1, 30]   "S(KC_B)"
     , cmb "combo_9" 50 [ 0, 1, 31]   "KC_9"
@@ -58,7 +84,9 @@ in [
     , cmb "combo_l_comm" 50 [ 2, 13 ] "KC_COMM"
     , cmb "combo_l_dot" 50 [ 2, 13,30 ] "KC_DOT"
     , cmb "combo_l_grv" 50 [ 2, 13,31 ] "KC_GRV"
-    , cmb "combo_l_quot" 50 [ 10, 1 ] "KC_QUOT"
+
+    -- this is horrible! [ 10, 1 ]
+    , cmb "combo_l_quot" 50 [ 21, 22] "KC_QUOT"
 
     , cmb "combo_l_enter" 10 [ 11, 12, 13 ] "KC_ENTER"
     , cmb "combo_l_esc" 10 [ 11, 12, 13,30 ] "KC_ESC" -- might need to change this,

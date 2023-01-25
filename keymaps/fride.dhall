@@ -3,43 +3,30 @@ let types = ../types.dhall
 let Ferris = ./ferris.dhall
 
 let base = types.HomeBlock::{
--- qwert y because fuck it
-          l1 = ["KC_COMM",  "KC_L",    "KC_G",    "KC_D",  "KC_T"]
-        , l2 = ["KC_I",     "KC_S",   "KC_R",    "KC_T", "OS_LSFT"]
-        , l3 = ["KC_1",     "KC_V",  "OS_LCTL",    "OS_LSFT", "KC_F18"]
+           l1 = ["KC_X",       "KC_L",         "KC_D",            "KC_P",         "KC_V"]
+          , r1 = ["KC_Z",       "KC_K",         "KC_O",            "KC_U",         "REPEAT"]
+          , l2 = ["KC_N",       "KC_R",         "KC_T",            "LSFT_T(KC_S)", "KC_G"]
+          , r2 = ["KC_Y",       "LSFT_T(KC_H)", "KC_E",            "LT(_NUM,KC_I)", "LT(_NUM,KC_A)"]
+          , l3 = ["KC_Q",       "KC_J",         "LALT_T(KC_M)",    "LGUI_T(KC_C)", "KC_W"]
+          , r3 = ["KC_B",       "LGUI_T(KC_F)", "LALT_T(KC_QUOT)", "KC_COMM",      "KC_DOT"]
 
-        , r1 = ["KC_DOT", "KC_H", "KC_U", "KC_O", "KC_BSPC"]
-        , r2 = ["OS_LSFT", "KC_N",  "KC_E", "KC_A", "KC_C"]
-        , r3 = ["KC_F19", "OS_LSFT",  "OS_LCTL",    "KC_QUOT", "KC_0"]
 
-    , thumb_l = ["MEH_T(KC_SPC)", "KC_BSPC"]
-    , thumb_r = ["REPEAT", "OSL(_ALPHA2)"]
+  , thumb_l = ["KC_SPC", "MEH_T(KC_SPC)"]
+  , thumb_r = ["REPEAT", "REPEAT"]
 }
 
-let alpha2 = types.HomeBlock::{
-          l1 = ["KC_NO", "KC_V",    "KC_W",    "KC_M",  "KC_NO"]
-        , l2 = ["KC_Q",  "KC_J",    "KC_P",    "KC_K", "OS_LSFT"]
-        , l3 = ["KC_1",  "KC_W",    "KC_NO",    "KC_NO", "KC_NO"]
+-- https://media.discordapp.net/attachments/962807598665576478/1031641279521619988/Taipo_Left_Right_v2.png?width=1114&height=645
+let taipo = types.HomeBlock::{
+          l1 = ["KC_R",  "KC_S",    "KC_N",    "KC_I",  "KC_NO"]
+        , l2 = ["KC_A",  "KC_O",    "KC_T",    "KC_E", "KC_W"]
+        , l3 = ["KC_LSFT", "KC_H",    "KC_L",    "KC_D", "KC_NO"]
 
-        , r1 = ["KC_NO",   "KC_F",  "KC_QUOT", "KC_Z", "KC_NO"]
-        , r2 = ["OS_LSFT", "KC_B",  "KC_DOT", "KC_X", "KC_Y"]
-        , r3 = ["KC_NO",  "KC_NO", "KC_NO", "S(KC_QUOT)", "KC_NO"]
+        , r1 = ["KC_NO", "KC_I", "KC_N", "KC_S", "KC_R"]
+        , r2 = ["KC_W", "KC_E",  "KC_T", "KC_O", "KC_A"]
+        , r3 = ["KC_NO", "KC_D", "KC_L", "KC_H", "KC_RSFT"]
 
-    , thumb_l = ["OS_LSFT", "KC_BSPC"]
-    , thumb_r = ["OSL(_ALPHA2_UPPER)", "TO_ALPHA2_UPPER"]
-}
-
-let alpha2_upper = types.HomeBlock::{
-          l1 = ["KC_NO",    "S(KC_V)",  "S(KC_W)",    "S(KC_M)", "KC_NO"]
-        , l2 = ["S(KC_Q)",  "S(KC_J)",  "S(KC_P)",    "S(KC_K)", "OS_LSFT"]
-        , l3 = ["KC_NO",    "S(KC_W)",    "KC_NO",      "KC_NO",  "KC_NO"]
-
-        , r1 = ["KC_NO", "S(KC_F)",  "S(KC_QUOT)", "S(KC_Z)", "KC_NO"]
-        , r2 = ["OS_LSFT", "S(KC_B)",  "KC_COMM", "S(KC_X)", "S(KC_Y)"]
-        , r3  = ["KC_NO", "KC_NO", "KC_NO", "KC_NO", "KC_NO"]
-
-    , thumb_l = ["OS_LSFT", "KC_BSPC"]
-    , thumb_r = ["KC_BSPC", "TO_ALPHA2_UPPER"]
+    , thumb_l = ["LSFT_T(KC_SPC)", "KC_BSPC"]
+    , thumb_r = ["KC_BSPC", "LSFT_T(KC_SPC)"]
 }
 
 let keymap =
@@ -47,12 +34,11 @@ let keymap =
       , name = "Jan Layout"
       , layout = "LAYOUT_split_3x5_2"
       , layers =
-        [   { name = "_ALPHA1", keys = Ferris.mk_layer base }
-          , { name = "_ALPHA2", keys = Ferris.mk_layer alpha2 }
-          , { name = "_ALPHA2_UPPER", keys = Ferris.mk_layer alpha2_upper }
-          , { name = "_NUM", keys = Ferris.mk_layer layers.number }
-          , { name = "_FUN", keys = Ferris.mk_layer layers.function }
-
+        [  { name = "_ALPHA1", keys = Ferris.mk_layer base }
+        ,  { name = "_ALPHA2", keys = Ferris.mk_layer taipo }
+        ,  { name = "_NAV", keys = Ferris.mk_layer layers.navigation }
+        ,  { name = "_NUM", keys = Ferris.mk_layer layers.number }
+        ,  { name = "_FUN", keys = Ferris.mk_layer layers.function }
         ]
       , combos = ./combos.dhall
       }
