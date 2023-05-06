@@ -33,7 +33,7 @@ let renderCombo = \(layer : List Text) ->
                   let key-codes = combo_trigger layer combo.key-positions
                   in merge
                     { kp = \(binding: Text) -> "COMB( ${combo.name},  ${binding}, ${key-codes})"
-                    , macro = \(binding: Text) -> "SUBS ${combo.name},  ${binding}, ${key-codes})"
+                    , macro = \(binding: Text) -> "SUBS (${combo.name},  \"${binding}\", ${key-codes})"
                     } combo.binding
 
 

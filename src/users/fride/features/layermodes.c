@@ -36,44 +36,40 @@ bool process_num_word(uint16_t keycode, const keyrecord_t *record) {
     return true;
 
   switch (keycode) {
-  case QK_MOD_TAP ... QK_MOD_TAP_MAX:
-  case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
-  case QK_TAP_DANCE ... QK_TAP_DANCE_MAX:
-    if (record->tap.count == 0)
-      return true;
-    keycode = keycode & 0xFF;
+    case QK_MOD_TAP ... QK_MOD_TAP_MAX:
+    case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
+    case QK_TAP_DANCE ... QK_TAP_DANCE_MAX:
+        if (record->tap.count == 0)
+          return true;
   }
+  keycode = keycode & 0xFF;
   switch (keycode) {
-  case KC_1 ... KC_0:
-  case KC_PERC:
-  case KC_COMM:
-  case KC_DOT: // still a . stops!?
-  case KC_SLSH:
-  case KC_MINS:
-  case KC_ASTR:
-  case KC_PLUS:
-  case KC_EQL:
-  case KC_F18:
-  case KC_F19:
-  case KC_ENT:
-  case REPEAT:
-  case KC_UNDS:
-  case KC_BSPC:
-  case OS_LSFT:
-  case OS_LALT:
-  case OS_LCTL:
-  case OS_LGUI:
-    // Don't disable for above keycodes
-    break;
-  case CANCEL:
-    if (record->event.pressed) {
-      disable_num_word();
-    }
-    return false;
-  default:
-    if (record->event.pressed) {
-      disable_num_word();
-    }
+      // Don't disable for those keycodes
+      case KC_1 ... KC_0:
+      case KC_PERC:
+      case KC_COMM:
+      case KC_DOT: // still a . stops!?
+      case KC_SLSH:
+      case KC_MINS:
+      case KC_ASTR:
+      case KC_PLUS:
+      case KC_EQL:
+      case KC_F18:
+      case KC_F19:
+      case KC_ENT:
+      case REPEAT:
+      case KC_UNDS:
+      case KC_BSPC:
+      case OS_LSFT:
+      case OS_LALT:
+      case OS_LCTL:
+      case OS_LGUI:
+        break;
+      default:
+        // All other keys disable the layer mode on keyup.
+        if (!record->event.pressed) {
+          disable_num_word();
+        }
   }
   return true;
 }

@@ -75,3 +75,9 @@ _ _ _ _ _   1 2 3 ;
 ```
 
 
+```txt
+sturdy (Oxey) (15 likes)
+  v m l c p  x f o u j  
+  s t r d y  . n a e i -
+  z k q g w  b h ' ; ,  
+```

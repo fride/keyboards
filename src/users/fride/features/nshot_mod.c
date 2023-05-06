@@ -126,12 +126,18 @@ bool is_nshot_ignored_key(uint16_t keycode, keyrecord_t *record) {
   case OS_LCTL:  // OS Mods
   case OS_LALT:  // OS Mods
   case OS_LGUI:  // OS Mods
-  case TO_ALPHA2:
-  case TO_ALPHA2_UPPER:
+  case TAB_MOD:  // OS Mods
+  case OSL(_ALPHA2):
     return true;
-  case NAV_SPC: // TODO -> check if this is a keyup after layer switch or after
-                // ....
-    if (layer_state_is(_NAV)) {
+  // special cases!
+  case LT(_NAV,KC_SPC):
+     if (layer_state_is(_NAV)) {
+        return true;
+      }
+      return false;
+  // does not work as expected!
+  case LT(_META,KC_SPACE): // TODO -> check if this is a keyup after layer switch or after
+    if (layer_state_is(_META)) {
       return true;
     }
     return false;

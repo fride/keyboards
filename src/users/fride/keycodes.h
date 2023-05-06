@@ -5,12 +5,13 @@
 enum layers {
     _ALPHA1,
     _ALPHA2,
-    _ALPHA2_UPPER,
-    _NAV,
     _NUM,
-    _SYM,
-    _MODS,
-    _FUN
+    _SYM1,
+    _SYM2,
+    _MOD,
+    _FUN,
+    _NAV,
+    _META
 };
 
 
@@ -28,6 +29,9 @@ enum custom_keycodes {
   GRV,
   TILD,
   DELIM, // on the NUM word layer
+
+  COMM,
+  DOT,
 
   // Smart caps lock and layers that turn off on certain keys
   CAPSWORD,
@@ -72,13 +76,24 @@ enum custom_keycodes {
   MOUSE_TGL,
   SLASH,
   UNDER,
-  DOUBLE_SHIFT
+  DOUBLE_SHIFT,
+
+  ZERO,
+  ONE,
+  TWO,
+  THREE,
+  FOUR,
+  FIVE,
+  SIX,
+  SEVEN,
+  EIGHT,
+  NINE,
+  OSS
 };
 
-
-#define TO_ALPHA2       OSL(_ALPHA2)
-#define TO_ALPHA2_UPPER OSL(_ALPHA2_UPPER)
-
+#define ESC_SYM LT(_MOD, KC_ESC)
+#define COLN_SYM LT(_SYM1, KC_TAB)
+#define TAB_MOD LT(_META, KC_TAB)
 #define NAV_SPC LT(_NAV, KC_SPC)
 
 // Semantic Keys

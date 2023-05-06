@@ -1,1 +1,1 @@
-COMB( combo_numword,  NUMWORD, ___T___,KC_NO)
+COMB( CMB_Q,  KC_Q, KC_G,KC_J)

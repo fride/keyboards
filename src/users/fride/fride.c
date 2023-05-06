@@ -9,6 +9,23 @@
 #include "features/utils.h"
 #include "features/layer_lock.h"
 
+
+#define WITHOUT_MODS(...) \
+  do { \
+    const uint8_t _real_mods = get_mods(); \
+    clear_mods(); \
+    { __VA_ARGS__ } \
+    set_mods(_real_mods); \
+  } while (0)
+
+#define WITHOUT_SHIFT(...) \
+  do { \
+    const uint8_t _real_mods = get_mods(); \
+    unregister_mods(MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT)); \
+    { __VA_ARGS__ } \
+    set_mods(_real_mods); \
+  } while (0)
+
 void tap16_repeatable(uint16_t keycode) {
   tap_code16(keycode);
   register_key_to_repeat(keycode);
@@ -130,6 +147,29 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
   oneshot_mod_state = get_oneshot_mods();
 
   switch (keycode) {
+  // the override did not work!
+    case COMM:
+        if (record->event.pressed) {
+            if (mod_state & MOD_MASK_SHIFT || oneshot_mod_state & MOD_MASK_SHIFT) {
+                WITHOUT_SHIFT( {
+                    tap16_repeatable(KC_SCLN);
+                });
+            } else {
+                tap16_repeatable(KC_COMM);
+            }
+        }
+        return false;
+    case DOT:
+        if (record->event.pressed) {
+            if (mod_state & MOD_MASK_SHIFT || oneshot_mod_state & MOD_MASK_SHIFT) {
+                WITHOUT_SHIFT( {
+                    tap16_repeatable(KC_COLON);
+                });
+            } else {
+                tap16_repeatable(KC_DOT);
+            }
+        }
+        return false;
     case DOUBLE_SHIFT:
         if (record->event.pressed) {
             tap_code16(KC_LSFT);
@@ -143,22 +183,18 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
             accent = true;
         }
         return false;
-  // layer toggle or repeat key :-)
-//  case UREPEAT:
-//    if (record->event.pressed && record->tap.count > 0) {
-//        update_repeat_key(record);
-//        return false;
-//    }
-//    break;
-  // one time shift on press, tap toggle else
-  // see https://precondition.github.io/home-row-mods for source!
-// TODO write down what I did but I don't use it anymore!
-//  case L_THUMB:
-//    if (record->event.pressed && record->tap.count > 0) {
-//          trigger_one_shot(OS_LSFT);
-//          return false;
-//      }
-//    break;
+     case ESC_SYM:
+       if (record->tap.count && record->event.pressed) {
+          tap16_repeatable(KC_ESC);
+          return false;
+      }
+      break;
+         case COLN_SYM:
+      if (record->tap.count && record->event.pressed) {
+          tap16_repeatable(KC_COLN);
+          return false;
+      }
+      break;
   case QU:
       if (record->event.pressed) {
           if (mod_state & MOD_MASK_SHIFT || oneshot_mod_state & MOD_MASK_SHIFT) {
@@ -280,7 +316,8 @@ bool _process_record_user(uint16_t keycode, keyrecord_t *record) {
     stop_leading();
     layer_off(_NAV);
     layer_off(_NUM);
-    layer_off(_SYM);
+    layer_off(_SYM1);
+    layer_off(_SYM2);
     disable_caps_word();
     disable_num_word();
     layer_move(_ALPHA1);
@@ -326,7 +363,7 @@ bool tap_hold(uint16_t keycode) {
   case KC_DQUO:
   case KC_EXLM:
   case KC_EQL:
-  case KC_MINS:
+//  case KC_MINS:
   case KC_LBRC:
   case KC_LPRN:
   case KC_LCBR:
@@ -344,6 +381,8 @@ bool tap_hold(uint16_t keycode) {
   case KC_HASH:
   case COPY_PASTE:
   case NAV_SHIFT:
+  case OSS:
+  case ZERO ... NINE:
     return true;
   default:
     return false;
@@ -354,8 +393,41 @@ void tap_hold_send_hold(uint16_t keycode) {
   disable_caps_word();
   mod_state = get_mods();
   switch (keycode) {
-  case NAV_SHIFT:
-  break;
+    case NAV_SHIFT:
+    break;
+  case OSS:
+    enable_xcase();
+    break;
+  case ZERO:
+    tap16_repeatable(KC_F10);
+    break;
+  case ONE:
+    tap16_repeatable(KC_F1);
+    break;
+  case TWO:
+    tap16_repeatable(KC_F2);
+    break;
+  case THREE:
+    tap16_repeatable(KC_F3);
+    break;
+  case FOUR:
+    tap16_repeatable(KC_F4);
+    break;
+  case FIVE:
+    tap16_repeatable(KC_F5);
+    break;
+  case SIX:
+    tap16_repeatable(KC_F6);
+    break;
+  case SEVEN:
+    tap16_repeatable(KC_F7);
+    break;
+  case EIGHT:
+    tap16_repeatable(KC_F8);
+    break;
+  case NINE:
+    tap16_repeatable(KC_F9);
+    break;
   case UNDER:
     tap_code16(KC_EXLM);
     break;
@@ -431,6 +503,40 @@ void tap_hold_send_tap(uint16_t keycode) {
   mod_state = get_mods();
   oneshot_mod_state = get_oneshot_mods();
   switch (keycode) {
+    case OSS:
+        trigger_one_shot(OS_LSFT);
+        break;
+    case ZERO:
+        tap16_repeatable(KC_0);
+        break;
+      case ONE:
+        tap16_repeatable(KC_1);
+        break;
+      case TWO:
+        tap16_repeatable(KC_2);
+        break;
+      case THREE:
+        tap16_repeatable(KC_3);
+        break;
+      case FOUR:
+        tap16_repeatable(KC_4);
+        break;
+      case FIVE:
+        tap16_repeatable(KC_5);
+        break;
+      case SIX:
+        tap16_repeatable(KC_6);
+        break;
+      case SEVEN:
+        tap16_repeatable(KC_7);
+        break;
+      case EIGHT:
+        tap16_repeatable(KC_8);
+        break;
+      case NINE:
+        tap16_repeatable(KC_9);
+        break;
+
   case KC_LT:
     tap_code16(KC_LT);
     break;

@@ -1,4 +1,4 @@
-let types = ../../types.dhall
+/let types = ../../types.dhall
 {-
     +----------------------------+
     | w l y p b   z f o u ;  [ ] |

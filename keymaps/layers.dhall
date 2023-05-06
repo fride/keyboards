@@ -108,15 +108,16 @@ let number_thumb_l = ["KC_0", "OSM(MOD_LSFT)"]
 let number_thumb_r = ["OSM(MOD_LCTL)", "OSL(_FUN)"]
 
 let number = types.HomeBlock::{
-      l1 = number_l1
-    , l2 = number_l2
-    , l3 = number_l3
-    , r1 = number_r1
-    , r2 = number_r2
-    , r3 = number_r3
-    , thumb_l = number_thumb_l
-    , thumb_r = number_thumb_r
+    l1 = [ "KC_J",    "NUM_G",  "KC_NO",    "KC_P",   "KC_NO"]
+   , l2 = ["KC_7",   "KC_5",   "KC_3",   "KC_1",  "NUM_G"]
+    ,l3 = ["SLASH",    "KC_X",   "KC_NO",    "KC_9",  "KC_NO"]
+    ,r1 = ["KC_BSLS",   "KC_COMM", "KC_DOT",  "KC_MINS", "KC_SLSH"]
+    ,r2 = ["KC_SLSH",  "KC_2",   "KC_4",    "KC_6",   "KC_8"]
+    ,r3 = ["KC_P",     "KC_0",    "KC_O",    "KC_K",    "KC_J"]
+    , thumb_l = ["LT(_NAV, KC_SPC)", "OS_LSFT"]
+    , thumb_r = ["REPEAT", "CANCEL"]
 }
+
 
 let fun_l1 = ["KC_NO", "KC_F7", "KC_F8", "KC_F9", "KC_F10"]
 let fun_r1 = ["KC_NO", "KC_NO", "KC_NO", "KC_NO", "KC_NO"]
@@ -138,9 +139,106 @@ let function = types.HomeBlock::{
   , thumb_r = fun_thumb_r
 }
 
+-- https://o-x-e-y.github.io/layouts/sturdy/index.html
+let sturdy = types.HomeBlock::{
+    , l1 = [ "KC_V",   "KC_M",   "KC_L",  "KC_C", "KC_P" ]
+    , l2 = [ "KC_S",   "KC_T",   "KC_R",  "KC_D", "KC_Y"]
+    , l3 = [ "KC_Z",   "KC_K",   "KC_Q",  "KC_G", "KC_W" ]
+
+    , r1 = [ "KC_X",   "KC_F",  "KC_O",     "KC_U",    "KC_J" ]
+    , r2 = [ "KC_DOT", "KC_N",  "KC_A",     "KC_E",    "KC_I"]
+    , r3 = [ "KC_B",   "KC_H",  "KC_QUOT",  "KC_SCLN", "KC_COMM" ]
+    , thumb_l = [ "_SPACE_", "OS_LSFT"]
+    , thumb_r = [ "OS_LCTL", "OS_LSFT"]
+    }
+{-
+  v m l c p  x f o u j
+  s t r d y  . n a e i -
+  z k q g w  b h ' ; ,
+-}
+
+
+{-
+Dwarf (KLCord) (0 likes)
+  f l h d v  z g o u .
+  s r n t m  p y e i a
+  x j b k q  c w ' , ;
+-}
 in {
     base = base,
+    sturdy = sturdy,
     navigation = navigation,
     number = number,
-    function = function
+    function = function,
+    semimakJQ = types.HomeBlock:: {
+      l1 = ["KC_F",       "KC_L",         "KC_H",            "KC_V",         "KC_Z"]
+    , l2 = ["KC_S",       "KC_R",         "KC_N",            "LSFT_T(KC_T)", "KC_K"]
+    , l3 = ["KC_X",       "KC_J",         "LALT_T(KC_B)",    "LGUI_T(KC_M)", "KC_Q"]
+    , r1 = ["KC_QUOT",     "KC_W",         "KC_U",            "KC_O",         "KC_Y"]
+    , r2 = ["KC_C",       "LSFT_T(KC_D)", "KC_E",            "KC_A",         "KC_I"]
+    , r3 = ["KC_P",       "LGUI_T(KC_G)", "LALT_T(KC_COMM)", "KC_DOT",      "KC_SLSH"]
+    , thumb_l = [ "_SPACE_", "OSL(_NAV)"]
+    , thumb_r = [ "OS_LCTL", "OS_LSFT"]
+    }
+    -- v c l d k  x y o u '
+    -- r s n t b  p h e i a
+    --  g m w      f , .
+    , hands_down_mod = types.HomeBlock:: {
+      l1 = ["KC_V",        "KC_C",         "KC_L",            "KC_D",         "KC_K"]
+    , l2 = ["KC_R",        "KC_S",         "KC_N",            "LSFT_T(KC_T)", "KC_B"]
+    , l3 = ["KC_NO",       "KC_G",         "LALT_T(KC_M)",    "LGUI_T(KC_W)", "KC_Q"]
+    , r1 = ["KC_X",        "KC_Y",         "KC_O",            "KC_U",         "KC_QUOT"]
+    , r2 = ["KC_P",        "LSFT_T(KC_H)", "KC_E",            "KC_I",         "KC_A"]
+    , r3 = ["KC_NO",       "LGUI_T(KC_F)", "LALT_T(KC_COMM)", "KC_DOT",      "KC_NO"]
+    , thumb_l = [ "_SPACE_", "OSL(_NAV)"]
+    , thumb_r = [ "OS_LCTL", "OS_LSFT"]
+    },
+    whorf = types.HomeBlock:: { -- https://github.com/whorfian/whorf
+      l1 = ["KC_F",          "KC_L",         "KC_H",            "KC_D",         "KC_M"]
+    , r1 = ["KC_V",          "KC_W",         "KC_O",            "KC_U",         "KC_COMM"]
+    , l2 = ["LSFT_T(KC_S)",  "KC_R",         "KC_N",            "LT(_NAV,KC_T)",   "MEH_T(KC_K)"]
+    , r2 = ["MEH_T(KC_G)",   "LT(_NAV,KC_Y)", "KC_A",            "LT(_NUM,KC_E)",  "RSFT_T(KC_I)"]
+    , l3 = ["KC_X",       "KC_J",         "LALT_T(KC_B)",    "LGUI_T(KC_Z)", "KC_Q"]
+    , r3 = ["KC_P",       "LGUI_T(KC_C)", "LALT_T(KC_QUOT)", "KC_SCLN",      "KC_DOT"]
+    , thumb_l = [ "_SPACE_", "OSL(_NAV)"]
+    , thumb_r = [ "OS_LCTL", "OS_LSFT"]
+    },
+    dwarf = types.HomeBlock:: {
+      l1 = ["KC_F",          "KC_L",         "KC_H",            "KC_D",         "KC_V"]
+    , r1 = ["KC_Z",          "KC_G",         "KC_O",            "KC_U",         "KC_DOT"]
+    , l2 = ["LSFT_T(KC_S)",  "KC_R",         "KC_N",            "LT(_NAV,KC_T)",   "MEH_T(KC_M)"]
+    , r2 = ["MEH_T(KC_P)",   "LT(_NAV,KC_Y)", "KC_E",            "LT(_NUM,KC_I)",  "RSFT_T(KC_A)"]
+    , l3 = ["KC_X",       "KC_J",         "LALT_T(KC_B)",    "LGUI_T(KC_K)", "KC_Q"]
+    , r3 = ["KC_C",       "LGUI_T(KC_W)", "LALT_T(KC_QUOT)", "KC_COMM",      "KC_SCLN"]
+    , thumb_l = [ "_SPACE_", "OSL(_NAV)"]
+    , thumb_r = [ "OS_LCTL", "OS_LSFT"]
+    },
+    isrt = types.HomeBlock::{
+        , l1 = [ "KC_Y", "KC_L", "KC_C", "KC_M",  "KC_K" ]
+        , l2 = [ "KC_I",  "KC_R",    "KC_S",   "KC_T",  "KC_G"]
+        , l3 = [ "KC_X", "KC_W",    "KC_D",   "KC_V",  "KC_J" ]
+
+        , r1 = [ "KC_Z",   "KC_F",    "KC_U",  "KC_COMM", "KC_QUOT" ]
+        , r2 = [ "KC_B",   "KC_N",    "KC_E",  "KC_A", "KC_O"]
+        , r3 = [ "KC_P",   "KC_H",    "KC_SLSH",  "KC_DOT", "KC_Q" ]
+        , thumb_l = [ "_SPACE_", "OS_LSFT"]
+        , thumb_r = [ "OS_LCTL", "OS_LSFT"]
+    },
+    ctgap = types.HomeBlock::{
+    , l1 = [ "KC_Q", "KC_P", "KC_L", "KC_C",  "KC_J" ]
+    , l2 = [ "KC_R",    "KC_N",    "KC_T",   "KC_S",  "KC_G"]
+    , l3 = [ "KC_Z", "KC_B",    "KC_M",   "KC_W",  "KC_V" ]
+
+    , r1 = [ "KC_X",   "KC_F",    "KC_O",   "KC_U", "REPEAT" ]
+    , r2 = [ "KC_Y",   "KC_H",    "KC_E",  "KC_I", "KC_A"]
+    , r3 = [ "KC_K",   "KC_D",    "KC_W",  "KC_V", "KC_Z" ]
+    , thumb_l = [ "_SPACE_", "OSL(_NAV)"]
+    , thumb_r = [ "OS_LCTL", "LT(_NUM,KC_L)"]
+    }
+            {-
+                q p l c j   x f o u /
+                r n t s g   y h e i a
+                z b m w v   k d ' , .
+            -}
+
 }

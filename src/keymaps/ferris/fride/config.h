@@ -33,12 +33,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_SAT_STEP 8
 #define RGBLIGHT_VAL_STEP 8
 
-// Prevent normal rollover on alphas from accidentally triggering mods.
+// home row
+// old!
+#define TAPPING_TERM 200
 #define IGNORE_MOD_TAP_INTERRUPT
-// Enable rapid switch from tap to hold, disables double tap hold auto-repeat.
 #define TAPPING_FORCE_HOLD
-// Apply the modifier on keys that are tapped during a short hold of a modtap
 #define PERMISSIVE_HOLD
+#define TAPPING_FORCE_HOLD_PER_KEY
 
 // Immediately turn on layer if key is pressed quickly
 // this cancels IGNORE_MOD_TAP_INTERRUPT.
@@ -64,8 +65,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // Not supported without flto
 #define NO_ACTION_MACRO
 #define NO_ACTION_FUNCTION
-
-#define TAPPING_TERM 220
 
 // Autoshift! I'm to slow with the pinkies!
 // https://github.com/qmk/qmk_firmware/blob/master/docs/feature_auto_shift.md
