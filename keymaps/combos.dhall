@@ -139,23 +139,12 @@ let older = [
 -}
 in
 [
-  cmb "combo_reset" 10 [ 0, 9 ] "QK_BOOT"
+  cmb "combo_reset" 10 [ 1, 8 ] "QK_BOOT"
 , cmb "combo_canel" 10 [ 10, 19 ] "CANCEL"
-, cmb "CMB_NAV" 5 [1,2, 3] "TG(_NAV)"
-, cmb "CMB_NUM" 5 [6,7,8] "NUMWORD"
-, cmb "CMB_NUM2" 5 [30,33] "NUMWORD"
-, cmb "CMB_COMM" 5 [16,17] "KC_COMM"
-, cmb "CMB_DOT" 5 [17,18] "KC_DOT"
-, cmb "CMB_QUOT" 5 [16,18] "KC_QUOT"
-, cmb "CMB_TAB" 5 [11,12,13] "TAB_MODm"
+, cmb "CMB_NAV" 5 [21,22, 23] "TG(_NAV)"
+, cmb "CMB_NUM" 5 [26,27,28] "NUMWORD"
+, cmb "CMB_TAB" 5 [11,12,13] "TAB_MOD"
 , cmb "CMB_ENTER" 5 [16,17,18] "KC_ENTER"
-, cmb "CMB_V" 5 [2,3] "KC_V"
-, cmb "CMB_Q" 5 [1,2] "KC_Q"
-, cmb "CMB_Z" 5 [22,23] "KC_Z"
 
---
-, cmb "CMB_ESC" 0 [12,13] "KC_ESC"
-, cmb "CMB_ESC2" 0 [16,17] "KC_ESC"
-, cmb "CMB_LCTL" 0 [11,12] "OS_LCTL"
-, cmb "CMB_RCTL" 0 [17,18] "OS_LCTL"
+
 ]

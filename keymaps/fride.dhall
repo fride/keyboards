@@ -2,6 +2,8 @@ let layers = ./layers.dhall
 let types = ../types.dhall
 let Ferris = ./ferris.dhall
 
+-- inspired by https://cdn.discordapp.com/attachments/895024940531744788/1042971898046324786/unknown.png
+
 -- see ~/Documents/org/roam/20230103091346-my_keyboards.org
 
 -- see https://cdn.discordapp.com/attachments/902300082433560606/974645619610243084/unknown.png
@@ -15,64 +17,27 @@ let nav = types.HomeBlock::{
 
 , l3 = ["KC_NO",          "KC_NO",         "KC_NO",            "KC_NO",           "KC_NO"]
 , r3 = ["KC_NO",          "KC_NO",         "KC_NO",            "KC_NO",           "CPYPASTE"]
-, thumb_l = ["KC_NO", "MEH_T(KC_SPC)"]
-, thumb_r = ["A(KC_SPC)", "OSL(_FUN)"]
+, thumb_l = ["TO(_ALPHA1)", "MEH_T(KC_SPC)"]
+, thumb_r = ["A(KC_SPC)", "KC_RGUI"]
 }
 
-let janMak = types.HomeBlock::{
-   l1 = ["KC_X",      "KC_C" ,       "KC_L",        "KC_D",     "KC_B"]
- , l2 = ["KC_R",      "KC_S",        "KC_N",        "KC_T",     "KC_K"]
- , l3 = ["KC_V",      "KC_W",        "KC_M",        "KC_G",     "KC_Q"]
-
-
- , r1 = ["KC_J",    "KC_Y",  "KC_O",      "KC_U",   "KC_QUOT"] -- Z is used more often then ; and in a flow.
- , r2 = ["KC_P",    "KC_H",  "KC_E",      "KC_I",   "REPEAT"]
- , r3 = ["KC_Z",    "KC_F",  "KC_COMM",   "KC_DOT", "KC_SLSH"]
-
- , thumb_l = ["LT(_NAV,KC_SPC)",  "OSL(_ALPHA2)"]
- , thumb_r = ["OSL(_NUM)",        "KC_A"]
-}
-let handsDown2 = types.HomeBlock::{
-   l3 = ["KC_W",       "KC_X" ,"KC_M",  "KC_G",     "KC_Z"]
- , l2 = ["KC_C",       "KC_S",        "KC_N",        "KC_T",    "KC_K"]
- , l1 = ["KC_P",       "KC_F",        "KC_L",        "KC_D",            "KC_V"]
-
-
- , r3 = ["KC_SCLN",    "KC_COMM",    "KC_DOT",   "KC_QUOT",   "KC_Q"] -- Z is used more often then ; and in a flow.
- , r2 = ["KC_J",       "KC_A",  "KC_E",   "KC_I",   "KC_H"]
- , r1 = ["KC_MINS",    "KC_U", "KC_O",      "KC_Y", "KC_B"]
-
- , thumb_l = ["KC_R",  "OSL(_ALPHA2)"]
- , thumb_r = ["OS_LSFT",        "LT(_NAV,KC_SPC)"]
-}
-
+-- p f l d v   z u o y b
+-- c s n t k   , a e i h
+-- w x m g j   q . = / '
+--         r
 let handsDown = types.HomeBlock::{
     l1 = ["KC_P",       "KC_F",        "KC_L",        "KC_D",            "KC_V"]
-  , l2 = ["KC_C",       "KC_S",        "KC_N",        "LSFT_T(KC_T)",    "KC_K"]
-  , l3 = ["KC_W",       "LCTL_T(KC_X)","LALT_T(KC_M)",  "LGUI_T(KC_G)",     "KC_Z"]
+  , l2 = ["KC_C",       "LT(_NUM,KC_S)",        "KC_N",        "LSFT_T(KC_T)",    "KC_K"]
+  , l3 = ["KC_W",       "LCTL_T(KC_X)","LALT_T(KC_M)",  "LGUI_T(KC_G)",     "KC_J"]
 
- , r1 = ["KC_MINS",    "KC_U", "KC_O",      "KC_Y", "KC_B"]
+ , r1 = ["KC_Z",       "KC_U", "KC_O",      "KC_Y", "KC_B"]
  , r2 = ["KC_COMM",    "RSFT_T(KC_A)",      "KC_E",   "LT(_NUM,KC_I)",   "KC_H"]
- , r3 = ["KC_J",       "RGUI_T(KC_DOT)",    "RALT_T(KC_EQL)",   "RCTL_T(KC_SLSH)",   "KC_QUOT"] -- Z is used more often then ; and in a flow.
+ , r3 = ["KC_Q",       "RGUI_T(KC_DOT)",    "RALT_T(KC_EQL)",   "RCTL_T(KC_SLSH)",   "KC_QUOT"] -- Z is used more often then ; and in a flow.
 
  , thumb_l = ["LT(_NAV,KC_R)",  "OS_LSFT"]
- , thumb_r = ["OS_LSFT",        "LT(_NUM,KC_SPC)"]
+ , thumb_r = ["OS_LSFT",        "LSFT_T(KC_SPC)"]
 }
 
-
-let alpha2 = types.HomeBlock::{
-   l3 = ["KC_W",       "LCTL_T(KC_X)","LALT_T(KC_M)",  "LGUI_T(KC_G)",     "KC_Z"]
- , l2 = ["KC_C",       "KC_S",        "KC_N",        "LSFT_T(KC_T)",    "KC_K"]
- , l1 = ["KC_P",       "KC_F",        "KC_L",        "KC_D",            "KC_V"]
-
-
- , r3 = ["KC_SCLN",    "RGUI_T(KC_COMM)",    "RALT_T(KC_DOT)",   "RCTL_T(KC_QUOT)",   "KC_Q"] -- Z is used more often then ; and in a flow.
- , r2 = ["KC_J",       "LALT(KC_A)",  "KC_E",   "LT(_NUM,KC_I)",   "LALT(KC_S)"]
- , r1 = ["KC_MINS",    "LALT(KC_U)", "LALT(KC_O)",      "KC_Y", "KC_B"]
-
- , thumb_l = ["LT(_NAV,KC_R)",  "OSL(_ALPHA2)"]
- , thumb_r = ["OS_LSFT",        "LT(_NUM,KC_SPC)"]
-}
 
 let symbol = types.HomeBlock::{
  , l1 = [ "KC_GRV",   "KC_LT",  "KC_ASTR", "KC_GT",   "KC_NO" ]
@@ -117,7 +82,7 @@ let numberBlock = types.HomeBlock::{
 , l3 = ["KC_PIPE",      "KC_1",          "KC_2",        "KC_3",     "KC_DLR"]
 
 , r1 = ["KC_BSLS",    "KC_7",          "KC_8",             "KC_9",     "KC_PSLS"]
-, r2 = ["KC_PIPE",    "KC_LGUI",       "KC_RALT",          "KC_RCTL",  "KC_RSFT"]
+, r2 = ["KC_PIPE",    "KC_1",          "KC_2",             "KC_3",     "KC_RSFT"]
 , r3 = ["KC_NO",      "KC_4",          "KC_5",             "KC_6",      "KC_J"]
 
 , thumb_l = ["KC_0", "KC_NO"]
@@ -157,12 +122,12 @@ let keymap =
       , name = "Jan Layout"
       , layout = "LAYOUT_split_3x5_2"
       , layers =
-        [  { name = "_ALPHA1", keys = Ferris.mk_layer janMak  }
-        ,  { name = "_ALPHA2", keys = Ferris.mk_layer alpha2  }
+        [  { name = "_ALPHA1", keys = Ferris.mk_layer handsDown  }
+        ,  { name = "_ALPHA2", keys = Ferris.mk_layer handsDown  }
         ,  { name = "_SYM1", keys = Ferris.mk_layer symbol }
         ,  { name = "_SYM2", keys = Ferris.mk_layer symbol }
         ,  { name = "_NAV", keys = Ferris.mk_layer nav }
-        ,  { name = "_NUM", keys = Ferris.mk_layer number }
+        ,  { name = "_NUM", keys = Ferris.mk_layer numberBlock }
         ,  { name = "_FUN", keys = Ferris.mk_layer layers.function }
         ,  { name = "_META", keys = Ferris.mk_layer meta }
         ]
